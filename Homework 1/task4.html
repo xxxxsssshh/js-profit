@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задача № 1.4</title>
+                    <script>
+
+                        "use strict"
+
+                        // Приветствие
+
+                        alert("Привет!\nДанная программа вычислит площадь круга по заданному радиусу.");
+
+                        // Ввод значения
+
+                        let radius = +prompt("Введите радиус круга");
+
+                        // Проверка значения и вычисление
+
+                        if (Number.isFinite(radius) == false) {
+                            alert("Ошибка! Введено некорректное число.");
+                            let reload = confirm("Перезапустить программу?");
+                            if (reload == true) {
+                                location.reload();
+                            } else {
+                                location.close();
+                            }
+                        } else {
+                        let area = Math.pow(radius, 2) * Math.PI;
+                        alert("Площадь круга равна " + area.toFixed(2) + "!");
+                        }
+                        
+                    </script>
+    </head>
+</html>

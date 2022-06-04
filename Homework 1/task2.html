@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <title>Задача № 1.2</title>
+                <body>
+                    <script>
+
+                        // Приветствие
+
+                        alert("Привет!\nПри вводе числа данная программа выведет в консоль квадрат введенного числа, остаток от деления на 2 и\
+ площадь равностороннего треугольника, сторона которого равна введенному числу.");
+
+                        // Ввод значения
+
+                        let a = +prompt("Введите число");
+                        
+                        // Проверка значения и вывод результатов в консоль и на экран
+                        
+                        if (Number.isFinite(a) == false) {
+                            alert("Ошибка! Введено некореектное значение!");
+                            let reload = confirm("Перезапустить программу?");
+                                if (reload == true) {
+                                    location.reload();
+                                } else {
+                                    location.close();
+                                }
+                        } else {
+                            let pow = Math.pow(a, 2);
+                            let remainder = a % 2;
+                            let triangleArea = Math.sqrt(3) / 4 * pow;
+                            console.log(pow);
+                            console.log(remainder);
+                            console.log(triangleArea);
+                            alert("Значения выведены в консоль разработчика.\nТакже значения будут отображены на экране.");
+                            document.write("Квадрат числа равен - " + pow);
+                            document.write("<br>Остаток числа от деления на 2 составляет - " + remainder);
+                            document.write("<br>Площадь равностороннего треугольника равна - " + triangleArea.toFixed(2));
+                        }
+            
+                    </script>
+                </body>
+    </head>
+</html>

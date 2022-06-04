@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <title>Задача № 1.1</title>
+                <body>
+                    <script>
+
+                        "use strict"
+
+                        // Массив с корректными значениями
+
+                        const TimesOfDay = ["утро", "день", "вечер", "ночь"];
+
+                        // Блок ввода значения, его проверка и вывод результата
+
+                        let value = prompt("Введите название времени суток");
+                        value.toLowerCase();
+                        let check = TimesOfDay.includes(value);
+
+                        if (check == false) {
+                            alert("Такого времени суток нет!");
+                            let reload = confirm("Перезапустить программу?");
+                                if (reload == true) {
+                                    location.reload();
+                                } else {
+                                    location.close();
+                                }
+                        } else {
+                            alert("Сейчас " + value + "!");
+                        }
+
+                    </script>
+                </body>
+    </head>
+</html>
