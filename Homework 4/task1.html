@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Задача № 4.1</title>
+        <body>
+            <meta charset="utf-8">
+                <script>
+
+                   "use strict"
+
+                    // Приветствие
+
+                    alert('Привет!\nС помощью данной программы мы сможем узнать площади фигур, созданных через точки A, B и С. \
+Для этого нам достаточно будет ввести координаты точек X и Y для этих точек!');
+
+                    // Блок ввода данных
+                    let x0 = 0;
+                    let y0 = 0;
+                    let x1A = +prompt("Введите значение координаты х для точки А:");
+                    let y1A = +prompt("Введите значение координаты y для точки А:");
+                    let x2B = +prompt("Введите значение координаты x для точки B:");
+                    let y2B = +prompt("Введите значение координаты y для точки B:");
+                    let x3C = +prompt("Введите значение координаты x для точки C:");
+                    let y3C = +prompt("Введите значение координаты y для точки C:");
+
+                    // Блок расчета значений внутри программы
+
+                    function areaСircle (x1, y1, x2, y2) {
+                        let radius = Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+                        let square = Math.PI * Math.pow(radius, 2);
+                        return square;
+                    }
+
+                    function areaSquare (x1, y1, x2, y2) {
+                        let side = Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+                        let square = Math.pow(side, 2);
+                        return square;
+                    }
+                    
+                    let AC = Math.sqrt(Math.pow((x1A - x3C),2) + Math.pow((y1A - y3C), 2));
+                    let BC = Math.sqrt(Math.pow((x2B - x3C),2) + Math.pow((y2B - y3C), 2));
+                    let areaRentangle = (AC * BC);
+
+                    // Сокращение имен и значений для простоты сравнения и вывода значений
+
+                    let sOA = +areaСircle(x0, y0, x1A, y1A).toFixed(2);
+                    let sOB = +areaSquare(x0, y0, x2B, y2B).toFixed(2);
+                    let sACBC = +areaRentangle.toFixed(2);
+
+
+                    // Вывод промежуточных значений 
+
+                    alert("Площадь круга с координатами точек OА(является радиусом) равна: " + sOA);
+                    alert("Площадь квадрата с координатами точек ОВ(является стороной квадрата) равна: " + sOB);
+                    alert("Площадь прямоугольника со координатами точек AC и BC(являются сторонами прямоугольника) равна: " + sACBC);
+
+                    // Сравнение полученных значений
+
+                    if (sOA > sOB && sOA > sACBC) {
+                        alert ("Площадь круга больше, чем площадь квадрата и прямоугольника!");
+                    } else if (sOB > sOA && sOB > sACBC) {
+                        alert ("Площадь квадрата больше чем площадь круга и прямоугольника!");
+                    } else if (sACBC > sOA && sACBC > sOB) {
+                        alert ("Площадь прямоугольника больше чем площадь круга и квадрата!");
+                    } else {
+                        alert ("Площади фигур совпали. Попробуйте изменить значения!");
+                    }
+
+                </script>
+        </body>
+    </head>
+</html>
+

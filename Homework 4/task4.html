@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>Задача № 4.4</title>
+                <body>
+                    <script>
+
+                        "use strict"
+
+                            // Приветствие
+
+                            alert("Привет!\nС помощью данной программы, мы можем узнать название месяца, просто введя его порядковый номер.");
+
+                            // Блок ввода переменной
+
+                            let month;
+
+                            let numberMonth = +prompt("Введите порядковый номер месяца:");
+
+                            // Блок присвоения значения переменной
+
+                            switch (numberMonth) {
+                                case 1 :
+                                    month = "Январь";
+                                        break;
+
+                                case 2 : 
+                                    month = "Февраль";
+                                        break;
+
+                                case 3 : 
+                                    month = "Март";
+                                        break;
+                                        
+                                case 4 :
+                                    month = "Апрель";
+                                        break;
+
+                                case 5 :
+                                    month = "Май";
+                                        break;
+
+                                case 6 :
+                                    month = "Июнь";
+                                        break;
+
+                                case 7 :
+                                    month = "Июль";
+                                        break;
+
+                                case 8 :
+                                    month = "Август";
+                                        break;
+
+                                case 9 : 
+                                    month = "Сентябрь";
+                                        break;
+
+                                case 10 :
+                                    month = "Октябрь";
+                                        break;
+
+                                case 11 : 
+                                    month = "Ноябрь";
+                                        break;
+
+                                case 12 :
+                                    month = "Декабрь";
+                                        break;
+
+                            }
+
+                            // Проверка переменной на корректность
+
+                            if (month == undefined) {
+                                alert("Произошла ошибка, некорректное значение!");
+                                let reload = confirm("Перезапустить программу?");
+                                    if (reload == true) {
+                                        location.reload();
+                                    } else {
+                                        location.close();
+                                    }
+                            }   else {
+                                alert("Название месяца - " + month);
+                            } 
+                    </script>
+                </body>
+    </head>
+    
+</html>
