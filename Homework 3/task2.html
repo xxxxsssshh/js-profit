@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>Задача № 3.2</title>
+                <body>
+                    <script>
+
+                    "use strict"
+
+                    // Приветствие
+
+                    alert("Привет!\nДанная программа вычислит радиус окружности, площадь круга и сторону квадрата по длине окружности.\
+\nПри вводе некорректного значения расчет не будет произведен!");
+
+                    //Блок ввода значения и проверка его на кореектность
+
+                    let length = +prompt("Введите длину окружности: ");
+
+                    // Проверка значения на корректность, расчет и вывод результата
+
+                    if (Number.isNaN(length) == true || length < 0 ) {
+                        alert("Ошибка! Введено некорректное значение");
+                        let reload = confirm("Перезапустить программу?");
+                        if (reload == true) {
+                            location.reload();
+                        } else {
+                            location.close();
+                        }
+                    } else {
+                        let radius = length / Math.PI / 2;
+                        let area = Math.PI * Math.pow(radius, 2);
+                        let side = Math.sqrt(area);
+                        alert("Радиус окружности равен: " + radius.toFixed(2) + "\nПлощадь круга равна: " + area.toFixed(2) + "\nСторона квадрата равна: " + side.toFixed(2));
+                    }
+
+                    </script>
+                </body>
+    </head>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>Задача № 3.1</title>
+                <body>
+                    <script>
+
+                        "use strict";
+
+                        // Приветствие
+
+                        alert("Привет!\nДанная программа вычислить площадь и объем полого цилиндра по внутреннему и внешенму радиусу.\
+\nБудьте внимательны! Внутрений радиус не может быть больше или равне внешнему радиусу!");
+
+                        // Блок ввода данных радиусов
+
+                        let R = +prompt("Введите размер внешнего радиуса прямого полого цилиндра:");
+                        let r = +prompt("Введите размер внутреннего радиуса прямого полого цилиндра:");
+
+                        // Блок проверки значений, расчет и вывод результата
+
+                        if (Number.isNaN(r) == NaN || Number.isNaN(R) == NaN || r >= R) {
+                            alert("Ошибка! Значения радиуса некорректы!");
+                            let reload = confirm("Перезапустить программу?");
+                            if (reload == true) {
+                                location.reload();
+                            } else {
+                                location.close();
+                            }
+                        } else {
+                            function cylinderSquare (outerRadius, innerRadius) {
+                                let heightCylinder = outerRadius + innerRadius;
+                                let square = 2 * Math.PI * (outerRadius + innerRadius) * (heightCylinder + outerRadius - innerRadius);
+                                return square;
+                            }
+
+                            function cylinderVolume (outerRadius, innerRadius) {
+                                let heightCylinder = outerRadius + innerRadius;
+                                let volume = Math.PI * (Math.pow(outerRadius, 2) - Math.pow(innerRadius, 2) * heightCylinder);
+                                return volume;
+                            }
+
+                            alert("Площадь цилиндра составляет: " + cylinderSquare(R, r).toFixed(2));
+
+                            if (cylinderVolume(R, r) < 0) {
+                                alert("Не удалось корректно вычислить объем цилиндра!");
+                            } else {
+                                alert("Объем цилиндра составляет: " + cylinderVolume(R, r).toFixed(2));
+                            }
+                        }
+
+            </script>
+        </body>
+    </head>
+</html>

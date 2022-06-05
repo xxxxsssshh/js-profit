@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>Задача №3.3</title>
+                <body>
+                    <script>
+
+                    "use strict";
+
+                    // Приветствие
+
+                    alert("Привет!\nДанная программа вычислит объем и площадь полой поверхности конуса по размеру площади основания конуса.\
+\nПри вводе некорректных значений, программа не произведет вычисление.");
+
+                    // Блок ввода значения
+
+                    let s = +prompt("Введите размер площади основания конуса:");
+
+                    // Проверка значения на корректность, вычисление и вывод результата
+
+                    if (s < 0 || Number.isNaN(s) == true) {
+                        alert("Ошибка! Введено некорректное значение!");
+                        let reload = confirm("Перезапустить программу?");
+                        if (reload == true) {
+                            location.reload();
+                        } else {
+                            location.close();
+                        } 
+                    } else {
+                        let r = (Math.sqrt(s / Math.PI));
+                        let d = r*2;
+                        let volume =  1 / 3 * s * d;
+
+                        function coneSquare (radius, diameter) {
+                            let coneHeight = diameter;
+                            let square = Math.PI * radius * (radius + Math.sqrt(Math.pow(radius, 2) + Math.pow(coneHeight, 2)));
+                            return square;
+                        }
+
+                        alert("Площадь полной поверхности конуса равна: " + coneSquare(r, d).toFixed(2));
+                        alert("Объем конуса равен " + volume.toFixed(2));
+                    }
+
+                </script>
+        </body>
+    </head>
+</html>

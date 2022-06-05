@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+            <body>
+                <title>Задача № 3.4</title>
+                    <script>
+
+                    "use strict"
+
+                    // Приветствие
+
+                    alert("Привет! Данная программа возведет любое число в степень 12 используя только 6 операций умножения");
+
+                    // Блок ввода числа
+
+                    let a = +prompt("Введите число, которое будет возведено в степень 12: ");
+
+                    // Проверка значения на корректность, вычисление и вывод результата
+
+                    if (Number.isNaN(a) == true) {
+                        alert("Ошибка! Введено некорректное значение!");
+                        let reload = confirm("Перезапустить программу?");
+                        if (reload == true) {
+                            location.reload();
+                        } else {
+                            location.close();
+                        }
+                    } else {
+                        function expoNumber (num) {
+                        let b = num * num;
+                        let c = b * b;
+                        let d = c * num;
+                        let e = d * d;
+                        let f = e * num;
+                        let g = f * num;
+                        return g
+                        }
+
+                        if (Math.pow(a, 12) == expoNumber(a)) {
+                            alert("Возведение в степень корректно. Итоговый результат: " + expoNumber(a));
+                        } else {
+                            alert("Возведение в степень прошло некорректно.");
+                        }
+                    }
+                        
+            </script>
+        </body>
+    </head>
+</html>
