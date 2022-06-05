@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задача № 2.1</title>
+                    <script>
+
+                        "use strict"
+
+                        // Приветствие
+
+                        alert("Привет!\nДанная программа выведет сумму двух чисел, а также выведет в консоль\
+ и на экран типы введенных данных.");
+
+                        // Ввод данных
+
+                        let a = +prompt("Введите первое число:"); 
+                        let b = +prompt("Введите второе число:");
+
+                        // Проверка и вывод значений
+
+                        if (Number.isFinite(a) == false || Number.isFinite(b) == false) {
+                            alert("Ошибка! Введено некореектное значение");
+                            let reload = confirm("Перезапустить программу?");
+                                if (reload == true) {
+                                    location.reload();
+                                } else {
+                                    location.close();
+                                }
+                        } else {
+                            let sum = a + b;
+                            alert("Сумма чисел равна - " + sum + "\nТипы данных чисел будут выведены в консоль и на экран.");
+                            let typeA = typeof a;
+                            let typeB = typeof b;
+                            console.log(typeA);
+                            console.log(typeB);
+                            document.write("Первое число А - " + a);
+                            document.write("<br>Тип числа А - " + typeA);
+                            document.write("<br>Второе число B - " + b);
+                            document.write("<br>Тип числа B - " + typeB);
+                            document.write("<br>Сумма данных чисел - " + sum);
+                        }
+
+                    </script>
+            </body>
+    </head>
+</html>

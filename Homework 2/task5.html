@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задача № 2.5</title>
+                    <script>
+
+                        // Массивы с наименованиями месяцов и их номерами
+
+                        let NumbersMonth = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+                        let NamesMonth = ["январь", "февраль",
+                                          "март", "апрель",
+                                          "май", "июнь",
+                                          "июль", "август",
+                                          "сентябрь" , "октябрь",
+                                          "ноябрь", "декабрь"];
+
+                        // Приветствие
+
+                        alert("Привет!\nДанная программа по вводу года и номера месяца определит, какое число является последним днем в месяце.\
+\nВвести можно абсолютно любой год!");
+
+                        // Ввод данных
+
+                        let year = +prompt("Введите год:");
+                        let month = +prompt("Введите номер месяца");
+
+                        // Проверка значений, расчет и вывод результата
+
+                        if (Number.isFinite(year) == false || NumbersMonth.includes(month) == false || year % 1 !== 0) {
+                            alert("Ошибка! Значение некоррректно!");
+                            let reload = confirm("Перезапустить программу?");
+                                if (reload == true) {
+                                    location.reload();                                
+                            } else {
+                                location.close();
+                            }
+                        } else {
+                        function getLastDayMonth (year, month) {
+                            let day = new Date (year, month, 0);
+                            return day.getDate();
+                            }
+                            alert("Выбран год - " + year + "\nВыбран месяц - " + NamesMonth[month - 1] + "\nПоследний день месяца - " + getLastDayMonth(year, month));                         
+                        }
+
+                    </script>
+            </body>
+    </head>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задача № 2.4</title>
+                    <script>
+
+                        "use strict"
+
+                        // Массив значений
+
+                        let Numbers = [1.8432611, 1.83, 5.1];
+
+                        // Приветствие
+
+                        alert("Привет!\nДанная программа округлит числа " + Numbers + " до второго знака после запятой, до целого\
+ числа и до четвертого знака после запятой, используя только умножение и деление.");
+
+                        // Функция округления числа до второго знака после запятой
+
+                        function calcNumbers1 (num) {
+                            let mult = num * 100;
+                            let rem = mult % 1;
+                            let result = (mult - rem) / 100;
+                            return result;
+                        }
+
+                        // Функция округления числа до целого
+
+                        function calcNumbers2 (num) {
+                            let rem = num % 1;
+                            let result = num - rem;
+                            return result;
+                        }
+
+                        // Функция округления числа до четвертого знака после запятой
+
+                        function calcNumbers3 (num) {
+                            let mult = num * 1000;
+                            let rem = mult % 1;
+                            return((mult - rem) / 1000);
+                        }
+
+                        // Вывод результата
+
+                        alert("Преобразование первого числа: " + calcNumbers1(Numbers[0]) + ", " + calcNumbers2(Numbers[0]) + ", " + calcNumbers3(Numbers[0]));
+                        alert("Преобразование второго числа: " + calcNumbers1(Numbers[1]) + ", " + calcNumbers2(Numbers[1]) + ", " + calcNumbers3(Numbers[1]));
+                        alert("Преобразование третьего числа: " + calcNumbers1(Numbers[2]) + ", " + calcNumbers2(Numbers[2]) + ", " + calcNumbers3(Numbers[2]));
+
+                    </script>
+            </body>
+    </head>
+</html> 
