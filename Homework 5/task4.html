@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задача № 5.4</title>
+                    <script>
+
+                        "use strict";
+
+
+                        // Приветствие
+
+                        alert("Данная программа выведет значение функции √x / x + 1, в интервале значений x от 1 до 3 включительно, с шагом + 0.2");
+
+                        // Объявление переменных
+
+                        let x = 1;
+                        let result = 0;
+                        let step = 0; // Счетчик циклов
+
+                        // Вычисление через цикл for и вывод результата
+
+                        for (x = 1; x < 3.01; x += 0.2) {
+                            x = x * 100 / 100;
+                           let result = Math.sqrt(x) / (x + 1);
+                           step++;
+                           alert("Шаг - " + step + "\nЗначение - " + x.toFixed(1) + "\nРезультат - " + result.toFixed(3));
+                        }
+
+                    </script>
+            </body>
+    </head>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задача № 5.3</title>
+                    <script>
+
+                        "use strict"
+
+                        // Приветствие
+
+                        alert("С помощью данной программы выведется результат произведения членов последовательности, который первый превысит заданное число N.\
+ Членом последовательности является выражение - 1 + |sin(0.1)|. Синус числа в цикле будет увеличиваться на 0.1");
+
+                        // Блок ввода значения и вспомогательных переменных для цикла
+ 
+                        let N = +prompt("Введите значение числа N:");
+                        let multiplication = 1;
+                        let remove = 0.1;
+
+                        // Цикл для вычисления
+
+                        while (multiplication < N) {
+                           multiplication *= 1 + Math.abs((Math.sin(remove)));
+                            remove += 0.1;
+                        }
+
+                        let step = remove * 10 - 1; // Счетчик цикла
+
+                        // Вывод значений и проверка на корректность
+
+                        if (Number.isFinite(N) == true) {
+                            alert("Значение выражения - " + multiplication.toFixed(3) + "\nКоличество циклов - " + step);
+                        } else {
+                            alert("Ошибка! Введено некорректное значение!");
+                            let reload = confirm("Перезапустить программу?");
+                            if (reload !== true) {
+                                location.close();
+                            } else {
+                                location.reload();
+                            }
+                        }
+
+                    </script>
+            </body>
+    </head>
+</html>

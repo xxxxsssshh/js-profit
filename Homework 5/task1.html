@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+            <body>
+                <title>Задача № 5.1</title>
+                    <script>
+
+                        "use strict"
+
+                        // Приветствие
+
+                        alert("С помощью данной программы и введенных значений Х и N, выведется результат, которая первый превысит значение N.\nВажно\
+ соблюдать условие - X должен быть обязательно меньше N. Иначе выражение будет вычислено некорректно!");
+
+                        // Ввод значений X и N и объявление вспомогательных переменных для цикла
+
+                        let X = +prompt("Введите значение для числа X:");
+                        let N = +prompt("Введите значение для числа N:");
+                        let sum = 0;
+                        let expo = 2;
+                        let numerator = 2;
+                        let denomirator = 1;
+
+                        // Проверка значения X и N на корректность
+
+                        if (X > N || Number.isNaN(X) == true|| Number.isNaN(N) == true) {
+                            alert("Ошибка!");
+                            let reload = confirm("Перезапустить программу?");
+                                if (reload !== true) {
+                                    location.close()
+                                } 
+                        }
+
+                        // Блок вычисления через цикл с постусловием
+
+                        do {
+                            sum += ((Math.pow(X, expo) + numerator) / (X + denomirator));
+                            expo++;
+                            numerator++;
+                            denomirator++;
+                        } while (sum + X < N );
+
+                        let step = denomirator - 1;     // Счетчик циклов
+                        let result = sum + X;           // Окончательная общая сумма
+
+
+                        // Вывод результата
+
+                        if (X > N || Number.isNaN(X) == true|| Number.isNaN(N) == true) {
+                            location.reload()
+                        } else {
+                            alert("Заданное число X - " + X + "\nЗаданное число N - " + N + "\nВычисленная сумма - " + result.toFixed(2) + "\nКоличество выполненых циклов - " + step);
+                        };
+                        
+                    </script>
+            </body>
+    </head>
+</html>
