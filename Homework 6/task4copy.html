@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задача № 6.4</title>
+                    <script>
+
+                        "use strict"
+
+                        // Приветствие
+
+                        alert("Привет!\nВ данной программе сгенерируются числа в массиве по заданному количеству элементов.\nДалее\
+ эти числа будут отсортированы по убыванию с помощью бинарных включений.");
+                        alert("ПРЕДУПРЕЖДЕНИЕ!\nДля более хорошего восприятия работы программы выставлено ограничение - задать возможно\
+ не более 40 элементов в массиве. Будьте внимательны при вводе!");
+
+                        // Массив для хранения сгенерировнных значений
+
+                        let Numbers = [];
+                        let sortNumbers = [];
+
+                        // Ввод пользователем количества элементов в массиве
+
+                        let J = +prompt("Введите количество элементов для генерации:");
+
+                        // Блок проверки значения количества, генерации чисел, сортировка и вывод результата
+
+                        let middle;
+
+                        if (J < 0 || J > 40 || Number.isNaN(J) == true || J == 0) {
+                            alert("Ошибка!");
+                            let reload = confirm("Попробовать еще раз?");
+                                if (reload == true) {
+                                    location.reload();
+                                } else {
+                                    location.close;
+                                }
+                        } else {
+
+                            while (Numbers.length !== J) {
+                            let random = Math.round(Math.random() * 1000);
+                            Numbers.push(random);
+                            }
+
+                            sortNumbers = Numbers.slice(0);
+                        
+                            for (let i = sortNumbers.length - 2; i >= 0; i--) {
+                                let rightStep = sortNumbers.length - 1;
+                                let leftStep = i + 1;
+                                let comparsion = sortNumbers[i];
+
+                                while (leftStep <= rightStep) {
+                                    middle = Math.round((leftStep + rightStep) / 2);
+                                    if (sortNumbers[middle] == comparsion) {
+                                        break;
+                                    }
+
+                                    if (sortNumbers[middle] > comparsion) {
+                                        leftStep = middle + 1;
+                                    } else {
+                                        rightStep = middle - 1;
+                                    }
+
+                                }
+
+                                if (sortNumbers[middle] > comparsion) {
+                                    middle+= 1;
+                                }
+                                
+                                sortNumbers.splice(middle, 0, comparsion);
+                                sortNumbers.splice(i, 1);
+                        }
+            
+                            document.write(`Сгенерирован массив из ${J} чисел:<br> ${Numbers}`);
+                            document.write(`<br>Сортировка чисел по убыванию:<br>${sortNumbers}`);
+                        }
+
+                    </script>
+            </body>
+    </head>
+</html>

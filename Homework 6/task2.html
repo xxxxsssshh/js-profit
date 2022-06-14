@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задача № 6.2</title>
+                    <script>
+
+                        "use strict"
+
+                        // Приветствие
+
+                        alert("Привет!\nДанная программа создаст последовательность из 10 случайных натуральных чисел в диапазоне от 0 до 100,\
+ и далее выведет четные числа из этой последовательности.");
+
+                        // Массив для заполнения рандомными числами от 0 до 100
+
+                        let Numbers = [];
+
+                        // Цикл для заполнения массива случайными числами
+
+                        while (Numbers.length !== 10) {
+                            let random = Math.round(Math.random() * 100);
+                            Numbers.push(random);
+                        }
+
+                        // Создание массива с четными числами
+
+                        let evenNumbers = Array.from(Numbers.entries()).filter(i => i[1] % 2 == 0).map(i =>i[1]);
+
+                        // Вывод результата
+
+                        if (evenNumbers.length == 0) {
+                            alert(`Cгенерированы числа : ${Numbers}\nЧетных чисел нет!`);
+                        } else {
+                            alert(`Сгенерированы числа: ${Numbers}\nЧетные числа: ${evenNumbers}\nКоличество четных чисел: ${evenNumbers.length}`);
+                        }
+                        
+                    </script>
+            </body>
+    </head>
+</html>

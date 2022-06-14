@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задача № 6.3</title>
+                    <script>
+
+                        "use strict"
+
+                        // Приветствие
+
+                        alert("Привет!\nДанная программа сгенерирует массив из 10 чисел в случайном порядке, определит\
+ минимальное и максимальное число в массиве, и вычислит произведение чисел, находящихся между минимальным и максимальным значением массива.");
+
+                        // Массивы для случайных чисел и для вычисления
+
+                        let Numbers = [];
+                        let expoNumbers = [];
+                        
+                        // Цикл для генерации чисел в случайном порядке
+
+                        while (Numbers.length !== 10) {
+                            let random = Math.round(Math.random() * 10);
+                            if (Numbers.includes(random) == true) {
+                                continue;
+                            } else {
+                                Numbers.push(random);
+                            }
+                        }
+
+                        // Определение минимального и максимального числа в массиве
+
+                        let min = Numbers[0];
+                        let max = Numbers[0];
+
+                        for (let i = 1; i < Numbers.length; i++) {
+                            if (Numbers[i] < min)
+                            min = Numbers[i];
+                        }
+
+                        for (let i = 1; i < Numbers.length; i++) {
+                            if (Numbers[i] > max)
+                            max = Numbers[i];
+                        }
+
+                        // Создание массива без минимального и максимального числа
+
+                        let indexMin = Numbers.indexOf(min);
+                        let indexMax = Numbers.indexOf(max);
+
+                        if (indexMin > indexMax) {
+                            while (indexMin > indexMax) {
+                                indexMax++;
+                                expoNumbers.push(Numbers[indexMax]);
+                            }
+                            expoNumbers.splice(expoNumbers.indexOf(min), 1);
+                        } else if (indexMin < indexMax) {
+                                while (indexMin < indexMax) {
+                                    indexMin++;
+                                    expoNumbers.push(Numbers[indexMin]);
+                                }
+                            expoNumbers.splice(expoNumbers.indexOf(max), 1);
+                        }
+
+                        // Вспомогательные переменные для вывода результата
+                        
+                        let alertNumbers = expoNumbers.slice(0);
+                        let expo;
+
+                        // Вычисление произведения и вывод результата
+
+                            if (expoNumbers.length > 1 ) {
+                                let i = 0;
+                                while (i < expoNumbers.length - 1) {
+                                    i++;
+                                    let expo = expoNumbers[0] *= expoNumbers[i];  
+                                }
+                                alert(`Сгенерированы числа: ${Numbers}\nМинимальное число: ${min}\nМаксимальное число: ${max}\nУмножение осуществится\
+ между числами: ${alertNumbers}\nРезультат умножения: ${expoNumbers[0]}`);
+                                } else if (expoNumbers.length == 1) {
+                                    alert(`Сгенерированы числа: ${Numbers}\nМинимальное число: ${min}\nМаксимальное число: ${max}\nМежду числами ${min} и ${max} находится только одно число - ${expoNumbers[0]}\nВычисление невозможно!`);
+                                } else {
+                                    alert(`Сгенерированы числа: ${Numbers}\nМинимальное число: ${min}\nМаксимальное число: ${max}\nМежду числами ${min} и ${max} нет чисел!\nВычисление невозможно!`);
+                                }
+                        
+                    </script>
+            </body>
+    </head>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задача № 6.3</title>
+                    <script>
+
+                        "use strict"
+
+                        // Приветствие
+
+                        alert("Привет!\nДанная программа сгенерирует массив из 5 случайных чисел в диапазоне от 0 до 10, определит\
+ минимальное и максимальное число в массиве, удалит из массива данные числа и выведет произведение трех оставшихся чисел.");
+
+                        // Массив для случайных чисел от 0 до 10
+
+                        let Numbers = [];
+
+                        // Цикл для генерации случайных чисел от 0 до 10
+
+                        while (Numbers.length !== 5) {
+                            let random = Math.round(Math.random() * 10);
+                            if (Numbers.includes(random) == true) {
+                                continue;
+                            } else {
+                                Numbers.push(random);
+                            }
+                        }
+
+                        // Определение минимального и максимального числа в массиве
+
+                        let min = Numbers[0];
+                        let max = Numbers[0];
+
+                        for (let i = 1; i < Numbers.length; i++) {
+                            if (Numbers[i] < min)
+                            min = Numbers[i];
+                        }
+
+                        for (let i = 1; i < Numbers.length; i++) {
+                            if (Numbers[i] > max)
+                            max = Numbers[i];
+                        }
+
+                        // Создание массива без минимального и максимального числа
+
+                        let expoNumbers = Numbers.slice(0);
+                        expoNumbers.splice(expoNumbers.indexOf(min), 1);
+                        expoNumbers.splice(expoNumbers.indexOf(max), 1);
+                        let alertNumbers = expoNumbers.slice(0);
+
+                        // Вычисление произведения трех оставшихся чисел
+                      
+                        let i = 0;
+                        while (i < expoNumbers.length - 1) {
+                                    i++;
+                                    let expo = expoNumbers[0] *= expoNumbers[i];  
+                                }
+
+                        // Вывод результата
+
+                        alert(`Сгенерированы числа: ${Numbers}\nМинимальное число: ${min}\nМаксимальное число: ${max}\nУмножение осуществится\
+ между числами: ${alertNumbers}\nРезультат умножения: ${expoNumbers[0]}`);
+
+                    </script>
+            </body>
+    </head>
+</html>

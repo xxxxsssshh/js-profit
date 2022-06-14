@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задача № 6.4</title>
+                    <script>
+
+                        "use strict"
+
+                        // Приветствие
+
+                        alert("Привет!\nВ данной программе сгенерируются числа в массиве по заданному количеству элементов.\nДалее\
+ эти числа будут отсортированы по убыванию.");
+                        alert("ПРЕДУПРЕЖДЕНИЕ!\nДля более хорошего восприятия работы программы выставлено ограничение - задать возможно\
+ не более 40 элементов в массиве. Будьте внимательны при вводе!");
+
+                        // Массив для хранения сгенерировнных значений
+
+                        let Numbers = [];
+
+                        // Ввод пользователем количества элементов в массиве
+
+                        let J = +prompt("Введите количество элементов для генерации:");
+
+                        // Блок проверки значения количества, генерации чисел, сортировка и вывод результата
+
+                        if (J < 0 || J > 41 || Number.isNaN(J) == true) {
+                            alert("Ошибка!");
+                            let reload = confirm("Попробовать еще раз?");
+                                if (reload == true) {
+                                    location.reload();
+                                } else {
+                                    location.close;
+                                }
+                        } else {
+                            while (Numbers.length !== J) {
+                            let random = Math.round(Math.random() * 1000);
+                            Numbers.push(random);
+                            }
+
+                            let sortNumbers = Numbers.slice(0);
+                            sortNumbers.sort((a, b) => b - a);
+                            document.write(`Сгенерировны числа:<br>${Numbers}`);
+                            document.write(`<br>Сортировка чисел по убыванию:<br>${sortNumbers}`);
+
+                        }
+
+                    </script>
+            </body>
+    </head>
+</html>
