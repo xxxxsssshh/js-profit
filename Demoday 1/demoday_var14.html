@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <style type="text/css">
+                body {
+                    font-family: Verdana, Tahoma, sans-serif;
+                    font-size: 13px;
+                    color: rgb(255, 255, 255);
+                    background-color: black;
+                    text-align: center;
+                }
+
+                table {
+                border-collapse: collapse;
+                border-spacing: 0;
+                margin: auto;
+                
+                }
+
+                tr, td {
+                padding: 10px 20px;
+                border: 1px solid rgb(255, 255, 255);
+                text-align: center;
+                }
+            </style>
+                <body>
+                    <h1 align="center">Созданные матрицы</h1>
+                        <title>Demoday</title>
+                        <script>
+
+                        "use strict"
+
+
+                        // Приветствие
+
+                        alert(`DEMODAY\nВ этом задании будет сгенерирована прямоугольная матрица S из случайных значений в диапазоне от -10 до 10.\
+                        \nРазмер матрицы будет задан пользователем. Далее на основе этой матрицы будут составлены другие матрицы по определенным условиям.`);
+                        alert(`БУДЬТЕ ВНИМАТЕЛЬНЫ!\nДля хорошего восприятия матриц выставлено ограничение - размер не может быть более 10 столбцов и строк!\
+                        \nПри вводе некорректного значения программа не запустится, для продолжения работы программу нужно будет перезапустить!`);
+                        
+                        // Ввод значений
+
+                        let m = +prompt("Введите количество строк для генерации матрицы S:");
+                        let n = +prompt("Введите количество столбцов для генерации матрицы S:");
+
+                        // Проверка корректности значений + ограничение по размеру матрицы - не более 10 столбцов и строк
+
+                        if (m <= 0 || n <= 0 || Number.isNaN(m) == true || Number.isNaN(n) == true || m * n % 1 !== 0 || m * n > 100) {
+                            alert("Задано некорректное значение!\nПерезапустите программу!");
+                            localtion.close();
+                        }
+
+                        // Создание пустых массивов для дальнейшей работы
+
+                        let matrixS = [];
+                        let matrixR = [];
+                        let martixT = [];
+
+                        // Заполнение числовой матрицы S случайными значениями
+   
+                        for (let i = 0; i < m; i++) {
+                            matrixS[i] = [];
+                            for (let j = 0; j < n; j++) {
+                                matrixS[i][j] = Math.round((Math.random() - Math.random()) * 10);
+                                if (matrixS[i][j] == -0) {
+                                    matrixS[i][j] = 0;
+                                }
+                            }
+                        }
+
+                        // Вывод результата по матрице S
+
+                        document.write(`<h3>Создана матрица из ${m * n} значений. (${m} строк и ${n} столбцов):</h3>`);
+                        document.body.appendChild(createTable(matrixS));
+                        alert(`Матрица S создана!\nСледующим шагом будет создана числовая матрица T на основе матрицы S, где будут соблюдены следующие условия:\
+                        \n- если в числовой матрице S есть значение 1, в матрице Т это значение будет изменено на -5\n- если в числовой матрице S есть значение -3, то это значение в матрице T будет изменено на 2\
+                        \n-если в числовой матрице S есть значение больше модуля числа 7, то это значение в матрице Т будет изменено на 0`);
+                        
+                        
+                        // Создание матрицы Т
+
+                        for (let i = 0; i < m; i++) {
+                            martixT[i] = [];
+                        }
+
+                        let i = 0;
+                        let j = 0;
+                        while (i <= n && j < m) {
+                            if (matrixS[j][i] == 1) {
+                                martixT[j][i] = - 5;
+                                i++;
+                            } else if (matrixS[j][i] == -3) {
+                                martixT[j][i] = 2;
+                                i++;
+                            } else if (Math.abs(matrixS[j][i]) > 7) {
+                                martixT[j][i] = 0;
+                                i++;
+                            } else if (i < n) {
+                                martixT[j][i] = matrixS[j][i];
+                                i++;
+                            } else {
+                                i = 0;
+                                j++;
+                            } 
+                        }
+
+                        // Вывод результата по матрице Т
+
+                        document.write(`<p><h3>Создана матрица Т на основе матрицы S, с заменой элементов по условию:</h3></p>`);
+                        document.body.appendChild(createTable(martixT));
+                        alert("Матрица Т создана!\nДалее на основе матрицы T мы создадим матрицу TT. Значения не будут изменены, но изменится их порядок - они будут расположены по возрастанию построчно, при помощи пузырькового метода сортировки.");
+                        
+
+                        // Создание матрицы TT и ее сортировка
+
+                        let matrixTT = martixT.slice();
+
+                        for (let i = 0; i < m; i++) {
+                            for (let j = 0; j < matrixTT[i].length; j++) {
+                                if (matrixTT[i][j] > matrixTT[i][j + 1]) {
+                                    let stepStr = matrixTT[i][j];
+                                    matrixTT[i][j] = matrixTT[i][j + 1];
+                                    matrixTT[i][j + 1] = stepStr;
+                                    j = -1;
+                                    i = 0;
+                                } else if (j == matrixTT[i].length - 1 && i + 1 < m) {
+                                    if (matrixTT[i][j] > matrixTT[i + 1][0]) {
+                                        let stepCol = matrixTT[i][j];
+                                        matrixTT[i][j] = matrixTT[i + 1][0];
+                                        matrixTT[i + 1][0] = stepCol;
+                                        j = -1;
+                                    } else {
+                                        j = -1;
+                                        i++;
+                                    } 
+                                } 
+                                    
+                                
+                            }
+                        }
+
+                        // Вывод результата по матрице ТТ
+ 
+                        document.write(`<p><h3>Создана матрица ТT на основе матрицы T, с сортировкой по возрастанию пузырьковым методом:</h3></p>`);
+                        document.body.appendChild(createTable(matrixTT));
+                        alert("Матрица ТТ создана!\nДалее на основе матрицы TТ мы создадим результирующую матрицу R.\
+                        \nДанную матрицу мы получим в результате вычитания из каждого элемента матрицы S, алгебраической суммы элементов соответствующего столбца матрицы ТТ.");
+
+                        // Создание результирующей матрицы R 
+ 
+                        for (let i = 0; i < m; i++) {
+                                matrixR[i] = [];
+                            }
+
+                        for (let i = 0; i < n; i++) {
+                            for (let j = 0; j < m; j++) {
+                                let sum = 0;
+                                let k = 0;
+                                while (k < m) {
+                                    sum += matrixTT[k][i];
+                                    k++;
+                                    }         
+                                matrixR[j][i] = matrixS[j][i] - sum;
+                                }
+                            }
+                        
+                        // Вывод результата по матрице R
+
+                        document.write(`<p><h3>Создана результирующая матрица R:</h3></p>`);
+                        document.body.appendChild(createTable(matrixR));  
+                        alert("Результирующая матрица R создана!\nРабота завершена!\nРезультаты будут отображены в документе в виде таблиц :)");
+
+                        // Функция, для перевода числовых матриц в табличный вид
+
+                        function createTable (arr) {
+                            let table = document.createElement("TABLE");
+                            let tableBody = document.createElement("TBODY");
+                            table.appendChild(tableBody); 
+                            for (let i = 0; i < arr.length; i++) {
+                            let tr = document.createElement("TR");
+                            tableBody.appendChild(tr); 
+                                for (let j = 0; j < arr[i].length; j++) {
+                                    let td = document.createElement("TD")
+                                    td.innerHTML = arr[i][j];
+                                    tr.appendChild(td)
+                                }
+                            }
+                              return table;
+                        }
+     
+                    </script>
+            </body>
+    </head>
+</html>
