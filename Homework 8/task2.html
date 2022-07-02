@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задание № 9.2</title>
+                    <script>
+
+                        "use strict"
+
+                        // Приветствие
+
+                        alert("По заданию представлен неориентированный граф с 10 вершинами. Каждая вершина соединена как минимум с одной вершиной!\
+                        \nДанная программа определит минимальный путь между двумя вершинами и его длину(количество пройденных ребер в графе).");
+
+                        // Неориентированный граф в виде объекта
+
+                        let graph = {
+                        1: [2, 6],
+                        2: [1, 9],
+                        3: [4, 9],
+                        4: [3, 5, 6, 7],
+                        5: [4, 9, 10],
+                        6: [1, 4, 7],
+                        7: [4, 6, 8],
+                        8: [7],
+                        9: [2, 3, 5, 10],
+                        10: [5, 9],
+                        };
+
+                        // Массив для добавления пути между двумя вершинами и переменные двух вершин
+
+                        let way = [];
+                        let begin = NaN;
+                        let end = NaN;
+
+                        // Ввод данных для двух вершин и проверка значений на корректность
+
+                        while(Number.isNaN(begin) == true || Number.isNaN(end) == true || begin > 10 || end > 10 || begin * end % 1 !== 0 || begin <= 0 || end <= 0 || begin == end) {
+                            begin = +prompt("Укажите значение первой вершины от 1 до 10:");
+                            end = +prompt("Укажите значение второй вершины от 1 до 10:");
+                            if (Number.isNaN(begin) == true || Number.isNaN(end) == true || begin > 10 || end > 10 || begin * end % 1 !== 0 || begin <= 0 || end <= 0 || begin == end) {
+                                alert("По вершинам заданы некорректные значения!");
+                                let reload = confirm("Попробовать еще раз?");
+                                if (reload == true) {
+                                    continue;
+                                } else {
+                                    alert("Ввод отменен! Программа будет закрыта.\nЧтобы попытаться еще раз - программу нужно будет запустить заново!");
+                                    location.close();
+                                    break;
+                                }
+                            } else {
+                                breadthFirstSearch(graph, begin, end);
+                            }
+                        }
+
+                        // Функция поиска в ширину точек для нахождения пути
+
+                        function breadthFirstSearch (graph, begin, end) {
+                            let queue = [];
+                            let visited = [];
+	                        queue.push(begin);
+	                        visited[begin] = true;
+	                        while(queue.length > 0) {
+		                        let v = queue.shift();
+		                        for(let neighbor of graph[v]) {
+			                        if(!visited[neighbor]) {
+				                        queue.push(neighbor);
+				                        visited[neighbor] = true;
+				                        if(neighbor === end) {
+                                            way.unshift(end);
+                                            if (begin !== v) {
+                                                end = v;
+                                                breadthFirstSearch(graph, begin, end);
+                                            } else {
+                                                way.unshift(begin);
+                                                return console.log(way);
+                                            }
+                                        }
+			                        } 
+		                        } 
+	                        }
+                        }
+
+                        // Вывод результата
+                        
+                        alert(`Заданы две вершины:\nПервая вершина - ${begin}\nВторая вершина - ${way[way.length - 1]}\
+                        \nДлина кратчайшего пути составляет - ${way.length - 1} ребер.\nСхема пути:\n${way.join("-->")}`);
+                        
+                    </script>
+            </body>
+    </head>
+</html>

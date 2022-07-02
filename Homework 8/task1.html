@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задание № 9.1</title>
+                    <script>
+
+                        "use strict"
+
+                        // Вспомогательные переменные
+
+                        let n = NaN;
+                        let townRoads = [];
+                        let roads = 0;
+
+                        // Приветствие
+
+                        alert("В данном задании мы подсчитаем количество дорог на планете Neptune, которые соединяют между собой города на этой планете.\
+                        \nСвязь между городами будет генерироваться случайным образом. Следующим шагом нужно будет задать количество городов, которое вы хотите видеть на этой планете.\
+                        \nОграничение - на планете Neptune не может быть более 100 городов.")
+
+
+                        // Проверка значений на корректность
+
+                        while(Number.isNaN(n) == true || n <= 0 || n > 100 || n % 1 !== 0) {
+                            n = +prompt("Укажите желаемое количество городов на планете Neptune:");
+                            if (Number.isNaN(n) == true || n <= 0 || n > 100 || n % 1 !== 0) {
+                                alert("Опаньки!\nВы задали некорректное количество или ввели некорректное значение :(");
+                                let reload = confirm("Попробовать еще раз?");
+                                if (reload == true) {
+                                    continue;
+                                } else {
+                                    alert("Ну ладно!\nЕсли захотите попробовать еще раз - перезапустите программу!");
+                                    location.close();
+                                    break;
+                                }
+                            } else {
+                                countRoad(n);
+                            }
+                        }
+
+                        // Функция для подсчета количества дорог
+
+                        function countRoad (n) {
+                            for (let i = 0; i < n; i++) {
+                                townRoads[i] = [];
+                                townRoads[i].length = n;
+                            }
+
+                            for (let i = 0; i < n; i++) {
+                                for (let j = 0; j < n; j++) {
+                                    if (i == j) {
+                                        townRoads[i][j] = 0;
+                                    } else if (townRoads[i][j] == undefined) {
+                                        townRoads[i][j] = Math.round(Math.random());
+                                        townRoads[j][i] = townRoads[i][j];
+                                        roads += townRoads[i][j];
+                                    } else {
+                                        continue;
+                                    }                                   
+                                }
+                            }
+                        }
+
+                        // Блок вывода результата
+
+                        if (n == 1) {
+                            alert("Поскольку на планете Neptune существует 1 город, то и дорог нет к другим городам.");
+                        } else if (roads == 0) {
+                            alert(`На планете Neptune существет ${n} городов.\nВот только беда - нет дорог, соединяющие эти города :(`);
+                        } else {
+                            alert(`На планете Neptune существует ${n} городов. Количество дорог, соединяющие города - ${roads}`);
+                        }
+
+                    </script>
+            </body>
+    </head>
+</html>
