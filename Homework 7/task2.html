@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <body>
+                <title>Задание № 8.2</title>
+                    <script>
+
+                        "use strict"
+
+                        // Приветствие
+
+                        alert("В данной программе будет вычислено значение функции F(n) с использованием рекурсивного алгоритма.\
+                        \nАлгоритм вычисления функции следующий:\
+                        \nпри n <= 5 Вычисление:\nF(n) = 2n\
+                        \nпри n > 5, и n значение четное. Вычисление\nF(n) = F(n - 2) + 3 * F(n : 2) + n\
+                        \nпри n > 5, и n значение нечетное. Вычисление\nF(n) = F(n - 1) + F(n - 2) + F(n - 3)");
+
+                        alert("В данной программе реализовано два варианта выполнения!\nВариант 1 - по заданию, где нужно найти сумму значений функции F(99) и F(100)\
+                        \nВариант 2 - вы можете сами задать значение фунцкии и получить ее результат.");
+
+                        let variant = 0; 
+
+                        while (variant !== 1 || variant !== 2) {
+                            variant = +prompt("Какой вариант выберете?");
+                                if (variant == 1 || variant == 2) {
+                                    break;
+                                } else {
+                                    alert("Некорректно выбран вариант!");
+                                    let reload = confirm("Попробуйте еще раз?");
+                                    if (reload == true) {
+                                        continue;
+                                    } else {
+                                        location.close();
+                                        break;
+                                    }
+                                }
+                        }
+
+                        // Рекурсивная функция для вычисления значения 
+
+                        function calcEquation (n) {
+                            if (n <= 5) {
+                                return 2 * n
+                            } else {
+                                if (n % 2 == 0) {
+                                    return calcEquation(n - 2) + 3 * calcEquation(n / 2) + n
+                                } else {
+                                    return calcEquation(n - 1) + calcEquation(n - 2) + calcEquation(n - 3);
+                                }
+                            }
+                        }
+
+                        // Ввод значения для варианта 2 и вывод результата в зависимости от выбранного варианта.
+
+                        if (variant == 2) {
+                            let value = +prompt("Выбран вариант 2.\
+                            \nДля варианта 2 выставлено ограничение - значение n не может быть равно 200 и более во избежании зависания программы!\
+                            \nВведите числовое значение n для функции F(n)");
+                            if (Number.isNaN(value) == true || value >= 200) {
+                            alert("Задано некорректное значение :(");
+                            let reload = confirm("Перезапустить программу?"); 
+                                if (reload == true) {
+                                    location.reload();
+                                } else {
+                                    location.close();
+                                }
+                        } else {
+                            alert(`Вариант 2.\nВведено значение ${value}.\nЗначение функции равно ${calcEquation(value)}`);
+                        }
+                        } else if (variant == 1) {
+                            let sum = calcEquation(99) + calcEquation(100);
+                                alert(`Выбран вариант 1.\nБудет вычислена сумма значений функций F(99) + F(100)\
+                                \nСумма значений равна ${sum}`);       
+                        }
+
+                    </script>
+            </body>
+    </head>
+</html>
