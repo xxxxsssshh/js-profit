@@ -1,0 +1,2737 @@
+<!--      R   E   A   D   M   E
+
+    Выполненое задание на демодень 30.07.2022 для profIT Hard Skills
+
+    Использованы HTML, CSS, JavaScript, jQuery
+
+    Некоторые элементы повзаимстовованны с песочницы codepen.io
+
+    HTML-код с 539 по 1027 стр.
+
+    Cтили СSS c 29 по 537 стр.
+
+    JavaScript- код с 1298 по 2735 стр.
+
+    jQuery код - c 1030 по 1296 стр.
+
+    Ссылка на gitHub - https://github.com/xxxxsssshh/js-profit
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>Велоспорт / Демодень 30.07.2022</title>
+        <body>
+            <style>
+
+                @import url('https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap');
+                @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
+        
+                body {
+                    background: #eff6d3;
+                    background-image: linear-gradient(-90deg, #255F3A, #26255F);
+                }
+
+                a {
+                    position: relative;
+                    display: inline-block;
+                    padding: 25px 30px;
+                    margin: 40px 0;
+                    color: #03e9f4;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    transition: 0.5s;
+                    letter-spacing: 4px;
+                    overflow: hidden;
+                    margin-right: 50px;
+                    align-items: center;
+                }
+
+                a:hover {
+                    background: #03e9f4;
+                    color: #050801;
+                    box-shadow: 0 0 5px #03e9f4,
+                            0 0 25px #03e9f4,
+                            0 0 50px #03e9f4,
+                            0 0 200px #03e9f4;
+                    -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+                }
+
+                a:nth-child(1) {
+                    margin-right: 500px;
+                }
+
+                a:nth-child(2) {
+                    filter: hue-rotate(110deg);
+                }
+
+                a span{
+                    position: absolute;
+                    display: block;
+                }
+
+                a span:nth-child(1) {
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 2px;
+                    background: linear-gradient(90deg,transparent,#f4f003);
+                    animation: animate1 1s linear infinite;
+                }
+
+                @keyframes animate1{
+                    0% {
+                        left: -100%;
+                    }
+
+                    50%, 100%{
+                        left: 100%;
+                    }
+                }
+
+                a span:nth-child(2) {
+                    top: -100%;
+                    right: 0;
+                    width: 2px;
+                    height: 100%;
+                    background: linear-gradient(180deg,transparent,#d0f403);
+                    animation: animate2 1s linear infinite;
+                    animation-delay: 0.25s;
+                }
+
+                @keyframes animate2 {
+                    0% {
+                        top: -100%;
+                    }
+
+                    50%, 100%{
+                        top: 100%;
+                    }
+                }
+
+                a span:nth-child(3) {
+                    bottom: 0;
+                    right: 0;
+                    width: 100%;
+                    height: 2px;
+                    background: linear-gradient(270deg,transparent,#ecf403);
+                    animation: animate3 1s linear infinite;
+                    animation-delay: 0.50s;
+                }
+
+                @keyframes animate3{
+                    0% {
+                        right: -100%;
+                    }
+
+                    50%, 100%{
+                        right: 100%;
+                    }
+                }
+
+                a span:nth-child(4) {
+                    bottom: -100%;
+                    left: 0;
+                    width: 2px;
+                    height: 100%;
+                    background: linear-gradient(360deg,transparent,#e0f403);
+                    animation: animate4 1s linear infinite;
+                    animation-delay: 0.75s;
+                }
+
+                @keyframes animate4{
+                    0% {
+                        bottom: -100%;
+                    }
+
+                    50%, 100%{
+                        bottom: 100%;
+                    }
+                }
+
+                #block {
+                    background: rgb(254, 254, 254);
+                    font-family: 'Jura', sans-serif;
+                    margin-left: 50px;
+                    margin-top: -25px;
+                    border-radius: 25px;
+                    width: 1300px;
+                    height: 720px;
+                    display: none;
+                }
+
+                #block1 {
+                    background: rgb(254, 254, 254);
+                    font-family: 'Jura', sans-serif;
+                    margin-left: 50px;
+                    margin-top: -25px;
+                    border-radius: 25px;
+                    width: 1300px;
+                    height: 800px;
+                    display: none;
+                }
+
+                #block2 {
+                    font-family: 'Jura', sans-serif;
+                    color: #fff;
+                    margin-left: 50px;
+                    margin-top: -25px;
+                    border-radius: 25px;
+                    width: 1300px;
+                    height: 800px;
+                    display: none;
+                }
+
+                #block3 {
+                    background: rgb(254, 254, 254);
+                    color: rgb(0, 0, 0);
+                    font-family: 'Jura', sans-serif;
+                    margin-left: 50px;
+                    margin-top: -25px;
+                    border-radius: 25px;
+                    width: 1300px;
+                    height: 700px;
+                    display: none;
+                }
+
+                #block4 {
+                  background-color: #000;
+                    color: aliceblue;
+                    font-family: 'Jura', sans-serif;
+                    margin-left: -10px;
+                    margin-top: -33px;
+                    width: 1500px;
+                    height: 840px;
+                    display: none;
+                }
+
+                #blockload {
+                    display: none;
+                }
+
+                #blockload1 {
+                    display: none;
+                    margin-left: 650px;
+                    margin-top: 300px;
+                }
+
+                #blockfirstround {
+                    font-family: 'Jura', sans-serif;
+                    color: aliceblue;
+                    margin-left: 50px;
+                    margin-top: -40px;
+                    width: 1300px;
+                    height: 800px;
+                    display: none;
+                }
+
+                #totalresult {
+                    font-family: 'Jura', sans-serif;
+                    color: aliceblue;
+                    margin-left: 50px;
+                    margin-top: 10px;
+                    width: 1300px;
+                    height: 800px;
+                    display: none;
+                }
+
+                #totalresultcountry {
+                    font-family: 'Jura', sans-serif;
+                    color: aliceblue;
+                    margin-left: 50px;
+                    margin-top: -25px;
+                    width: 1300px;
+                    height: 800px;
+                    display: none;
+                }
+
+                #infosecondround {
+                    background: rgb(254, 254, 254);
+                    color: rgb(0, 0, 0);
+                    font-family: 'Jura', sans-serif;
+                    margin-left: 50px;
+                    margin-top: -25px;
+                    border-radius: 25px;
+                    width: 1300px;
+                    height: 700px;
+                    display: none;
+                }
+
+                #blocksecondresult {
+                    font-family: 'Jura', sans-serif;
+                    color: aliceblue;
+                    margin-left: 50px;
+                    margin-top: -25px;
+                    width: 1300px;
+                    height: 800px;
+                    display: none;
+                }
+
+                #fullresultriders {
+                    font-family: 'Jura', sans-serif;
+                    color: aliceblue;
+                    margin-left: 50px;
+                    margin-top: -40px;
+                    width: 1300px;
+                    height: 800px;
+                    display: none;
+                }
+
+                #fullresultcountry {
+                    font-family: 'Jura', sans-serif;
+                    color: aliceblue;
+                    margin-left: 50px;
+                    margin-top: 10px;
+                    width: 1300px;
+                    height: 800px;
+                    display: none;
+                }
+
+                #winners {
+                    font-family: 'Jura', sans-serif;
+                    color: aliceblue;
+                    margin-left: 50px;
+                    margin-top: -30px;
+                    width: 1300px;
+                    height: 800px;
+                    display: none;
+                }
+                
+                p {
+                    font-size: 30px;
+                    text-align: center;
+                }
+
+                h1 {
+                    font-size: 50px;
+                }
+
+                .australia {
+                    width: 250px;
+                    height: 250px;
+                    margin-left: 20px;
+                }
+
+                .belgium {
+                    width: 250px;
+                    height: 250px;
+                    margin-left: 300px;
+                    margin-top: -250px;
+                }
+
+                .denmark {
+                    width: 250px;
+                    height: 250px;
+                    margin-left: 580px;
+                    margin-top: -250px;    
+                }
+
+                .france {
+                    width: 250px;
+                    height: 250px;
+                    margin-left: 860px;
+                    margin-top: -250px;    
+                }
+
+                .germany {
+                    width: 250px;
+                    height: 250px;
+                    margin-left: 1140px;
+                    margin-top: -250px;    
+                }
+
+                .greatbritian {
+                    width: 250px;
+                    height: 250px;
+                    margin-left: 20px;
+                    margin-top: 80px;    
+                }
+
+                .italy {
+                    width: 250px;
+                    height: 250px;
+                    margin-left: 300px;
+                    margin-top: -250px;    
+                }
+
+                .netherlands {
+                    width: 250px;
+                    height: 250px;
+                    margin-left: 580px;
+                    margin-top: -250px;    
+                }
+
+                .slovenia {
+                    width: 250px;
+                    height: 250px;
+                    margin-left: 860px;
+                    margin-top: -250px;    
+                }
+
+                .usa {
+                    width: 250px;
+                    height: 250px;
+                    margin-left: 1140px;
+                    margin-top: -250px;    
+                }
+
+                h3 {
+                    text-align: center;
+                    margin-right: 120px;
+                    font-family: 'Titillium Web', sans-serif;
+                }
+
+                #rider {
+                    text-align: center;
+                    font-size: 13px;
+                    font-family: 'Titillium Web', sans-serif;
+                    margin-right: 120px;
+                }
+
+                .wrap {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 20px;
+                }
+
+                .wrap1 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 80px;   
+                }
+
+                .wrap2 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 10px;
+                }
+
+                .wrap3 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 100px;
+                }
+
+                .wrap4 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: -50px;
+                }
+
+                .wrap5 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .wrap6 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .wrap7 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 20px;
+                    margin-right: 50px;
+                }
+
+                .wrap8 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 10px;
+                }
+
+                .wrap9 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 10px;
+                }
+
+                .wrap10 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 10px;
+                }
+
+                .wrap11 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 10px;
+                }
+
+                .firstround {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 300px;
+                }
+
+                #place {
+                    align-items: center;
+                    margin-left: 1000px;
+                    margin-top: -70px;
+                }
+
+                button {
+                    width: 140px;
+                    height: 45px;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 11px;
+                    text-transform: uppercase;
+                    letter-spacing: 2.5px;
+                    font-weight: 500;
+                    color: #000;
+                    background-color: rgb(255, 253, 253);
+                    border: none;
+                    border-radius: 45px;
+                    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+                    transition: all 0.3s ease 0s;
+                    cursor: pointer;
+                    outline: none;
+                    border-color: #000;
+                }
+
+                button:hover {
+                    background-color: #2EE59D;
+                    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+                    color: #fff;
+                    transform: translateY(-7px);
+                }
+
+                .blockbuttons {
+                    margin-left: 250px;
+                    margin-top: 100px;
+                }
+
+                .blockbuttons1 {
+                    margin-left: 230px;
+                    margin-top: 100px;
+                }
+
+                td {
+                    vertical-align: middle;
+                }
+
+                #confetti {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+            </style>
+
+            <div id="block">
+                <h1 align="center">Международные соревнования по велоспорту</h1>
+                <p>В данных соревнованиях принимают участие 40 гонщиков из 10 стран.<br><br>Данные соревнования проходят в два круга.<br><br>
+                В первом круге проходят максимум 5 этапов.<br><br> Далее по общим результатам этапов первого круга во второй круг проходят 4 лучшие страны.<br><br>
+                Во втором круге проходят 2 этапа, по результатам этого круга определяется страна-победитель соревнований и лучший гонщик соревнований.<br><br>
+                На каждом этапе гонщик получает очки - за победу дается 80 баллов, сделующему гонщику дается 78 баллов, и так далее до последнего гонщика, который получает 2 минимальных балла.
+                </p>
+                <div class="wrap">
+                    <button id="next">Далее</button>
+                </div>
+            </div>
+
+            <div id="block1">
+                <h1 align="center">Участники соревнований</h1>
+
+                <div class ="australia">
+                    <img src="https://i.ibb.co/r76jXKc/free-icon-australia-3909435.png">
+                    <h3>Australia</h3>
+                    <p id="rider">#98 Michael Storer<br>
+                    #161 Caleb Ewan<br>#193 Simon Clarke<br>#201 Michael Matthews</p>
+                </div>
+
+                <div class ="belgium">
+                    <img src="https://i.ibb.co/PhDxbCd/free-icon-belgium-197583.png">
+                    <h3>Belgium</h3>
+                    <p id="rider">#16 Wout van Aert<br>
+                    #33 Kobe Goossens<br>#86 Dylan Teuns<br>#105 Jasper Philipsen</p>
+                </div>
+
+                <div class ="denmark">
+                    <img src="https://i.ibb.co/rQjN5Bc/premium-icon-denmark-5372740.png">
+                    <h3>Denmark</h3>
+                    <p id="rider">#3 Mikkel Bjerg<br>
+                        #57 Michael Morkov<br>#146 Magnus-Cort Nielsen<br>#171 Mads Pedersen</p>
+                </div>
+
+                <div class ="france">
+                    <img src="https://i.ibb.co/v4ShDh1/free-icon-france-197560.png">
+                    <h3>France</h3>
+                    <p id="rider">#15 Christophe Laporte<br>
+                        #58 Florian Senechal<br>#91 David Gaudu<br>#111 Romain Bardet</p>
+                </div>
+
+                <div class ="germany">
+                    <img src="https://i.ibb.co/2vCjzKy/premium-icon-germany-5315745.png">
+                    <h3>Germany</h3>
+                    <p id="rider">#44 Lennard Kamna<br>
+                    #46 Nils Pollit<br>#65 Gregor Muhlberger<br>#73 Simon Geschke</p>
+                </div>
+
+                <div class ="greatbritian">
+                    <img src="https://i.ibb.co/ZG8GfVr/free-icon-united-kingdom-197374.png">
+                    <h3>Great Britian</h3>
+                    <p id="rider">#21 Geraint Thomas<br>
+                    #25 Thomas Pidcock<br>#28 Adam Yates<br>#88 Fred Wright</p>
+                </div>
+
+                <div class ="italy">
+                    <img src="https://i.ibb.co/tJbmXrJ/free-icon-italy-197626.png">
+                    <h3>Italy</h3>
+                    <p id="rider">#24 Filippo Ganna<br>
+                    #53 Andrea Bagioli<br>#76 Anthony Perez<br>#107 Kristian Sbaragli</p>
+                </div>
+
+                <div class ="netherlands">
+                    <img src="https://i.ibb.co/xFkY8FZ/free-icon-netherlands-323275.png">
+                    <h3>Netherlands</h3>
+                    <p id="rider">#51 Fabio Jakobsen<br>
+                    #127 Taco van der Hoorn<br>#175 Bauke Mollema<br>#204 Dylan Groenewegen</p>
+                </div>
+
+                <div class ="slovenia">
+                    <img src="https://i.ibb.co/fHdjzSz/free-icon-slovenia-197633.png">
+                    <h3>Slovenia</h3>
+                    <p id="rider">#1 Tajey Pogochar<br>
+                    #11 Primos Roglic<br>#84 Matej Mohoric<br>#207 Luka Mezgec</p>
+                </div>
+
+                <div class ="usa">
+                    <img src="https://i.ibb.co/f1r3J3Y/free-icon-united-states-197484.png">
+                    <h3>USA</h3>
+                    <p id="rider">#14 Sepp Kuss<br>
+                    #64 Matteo Jorgenson<br>#147 Neilson Powless<br>#176 Quinn Simmons</p>
+                </div>
+
+                <div class="wrap1">
+                    <button id="next1">Далее</button>
+                </div>
+            </div>
+
+            <div id="block2">
+                <h1 align="center">Рейтинг гонщиков</h1>
+                <div class="shap">
+                    <table style="border-color: #fff; text-align: center; margin-left: 200px;">
+                    <tr>
+                        <th>Номер</th>
+                        <th>Гонщик</th>
+                        <th>Страна</th>
+                        <th>Рейтинг</th>
+                    </tr>
+                    <tr>
+                        <td>#16</td>
+                        <td>Wout van Aert</td>
+                        <td><img src="https://i.ibb.co/fqdh5c5/free-icon-belgium-330520.png"></td>
+                        <td>97</td>
+                    </tr>
+                    <tr>
+                        <td>#1</td>
+                        <td>Tajey Pogochar</td>
+                        <td><img src="https://i.ibb.co/dfv8yf6/free-icon-slovenia-206842.png"></td>
+                        <td>96</td>
+                    </tr>
+                    <tr>
+                        <td>#51</td>
+                        <td>Fabio Jakobsen</td>
+                        <td><img src="https://i.ibb.co/2c08g8m/free-icon-netherlands-206615.png"></td>
+                        <td>96</td>
+                    </tr>
+                    <tr>
+                        <td>#146</td>
+                        <td>Magnus-Cort Nielsen</td>
+                        <td><img src="https://i.ibb.co/88HXWTJ/free-icon-denmark-2151310.png"></td>
+                        <td>95</td>
+                    </tr>
+                    <tr>
+                        <td>#15</td>
+                        <td>Christophe Laporte</td>
+                        <td><img src="https://i.ibb.co/jg7fgGL/free-icon-france-206657.png"></td>
+                        <td>94</td>
+                    </tr>
+                    <tr>
+                        <td>#105</td>
+                        <td>Jasper Philipsen</td>
+                        <td><img src="https://i.ibb.co/fqdh5c5/free-icon-belgium-330520.png"></td>
+                        <td>94</td>
+                    </tr>
+                    <tr>
+                        <td>#24</td>
+                        <td>Filippo Ganna</td>
+                        <td><img src="https://i.ibb.co/R6wBPxr/premium-icon-italy-3373278.png"></td>
+                        <td>93</td>
+                    </tr>
+                    <tr>
+                        <td>#44</td>
+                        <td>Lennard Kamna</td>
+                        <td><img src="https://i.ibb.co/GHXgJQJ/free-icon-germany-555613.png"></td>
+                        <td>93</td>
+                    </tr>
+                    <tr>
+                        <td>#171</td>
+                        <td>Mads Pedersen</td>
+                        <td><img src="https://i.ibb.co/88HXWTJ/free-icon-denmark-2151310.png"></td>
+                        <td>92</td>
+                    </tr>
+                    <tr>
+                        <td>#91</td>
+                        <td>David Gaudu</td>
+                        <td><img src="https://i.ibb.co/jg7fgGL/free-icon-france-206657.png"></td>
+                        <td>91</td>
+                    </tr>
+                    <tr>
+                        <td>#204</td>
+                        <td>Dylan Groenewegen</td>
+                        <td><img src="https://i.ibb.co/2c08g8m/free-icon-netherlands-206615.png"></td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>#147</td>
+                        <td>Neilson Powless</td>
+                        <td><img src="https://i.ibb.co/MfX5rcp/free-icon-united-states-206626.png"></td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>#193</td>
+                        <td>Simon Clarke</td>
+                        <td><img src="https://i.ibb.co/MNZBZpX/free-icon-australia-206618.png"></td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>#21</td>
+                        <td>Geraint Thomas</td>
+                        <td><img src="https://i.ibb.co/jrtg6h2/free-icon-united-kingdom-555417.png"></td>
+                        <td>89</td>
+                    </tr>
+                    <tr>
+                        <td>#86</td>
+                        <td>Dylan Teuns</td>
+                        <td><img src="https://i.ibb.co/fqdh5c5/free-icon-belgium-330520.png"></td>
+                        <td>89</td>
+                    </tr>
+                    <tr>
+                        <td>#33</td>
+                        <td>Kobe Goossens</td>
+                        <td><img src="https://i.ibb.co/fqdh5c5/free-icon-belgium-330520.png"></td>
+                        <td>88</td>
+                    </tr>
+                    <tr>
+                        <td>#88</td>
+                        <td>Fred Wright</td>
+                        <td><img src="https://i.ibb.co/jrtg6h2/free-icon-united-kingdom-555417.png"></td>
+                        <td>88</td>
+                    </tr>
+                    <tr>
+                        <td>#201</td>
+                        <td>Michael Matthews</td>
+                        <td><img src="https://i.ibb.co/MNZBZpX/free-icon-australia-206618.png"></td>
+                        <td>88</td>
+                    </tr>
+                    <tr>
+                        <td>#64</td>
+                        <td>Matteo Jorgenson</td>
+                        <td><img src="https://i.ibb.co/MfX5rcp/free-icon-united-states-206626.png"></td>
+                        <td>87</td>
+                    </tr>
+                    <tr>
+                        <td>#57</td>
+                        <td>Michael Morkov</td>
+                        <td><img src="https://i.ibb.co/88HXWTJ/free-icon-denmark-2151310.png"></td>
+                        <td>87</td>
+                    </tr>
+                    </table>
+
+                    <table style="border-color: #fff; text-align: center; margin-left: 800px; margin-top: -656px;" >
+                        <tr>
+                        <th>Номер</th>
+                        <th>Гонщик</th>
+                        <th>Страна</th>
+                        <th>Рейтинг</th>
+                        </tr>
+                        <tr>
+                        <td>#25</td>
+                        <td>Thomas Pidcock</td>
+                        <td><img src="https://i.ibb.co/jrtg6h2/free-icon-united-kingdom-555417.png"></td>
+                        <td>86</td>
+                        </tr>
+                        <tr>
+                        <td>#127</td>
+                        <td>Taco van der Hoorn</td>
+                        <td><img src="https://i.ibb.co/2c08g8m/free-icon-netherlands-206615.png"></td>
+                        <td>86</td>
+                        </tr>
+                        <tr>
+                        <td>#161</td>
+                        <td>Caleb Ewan</td>
+                        <td><img src="https://i.ibb.co/MNZBZpX/free-icon-australia-206618.png"></td>
+                        <td>86</td>
+                        </tr>
+                        <tr>
+                        <td>#176</td>
+                        <td>Quinn Simmons</td>
+                        <td><img src="https://i.ibb.co/MfX5rcp/free-icon-united-states-206626.png"></td>
+                        <td>86</td>
+                        </tr>
+                        <tr>
+                        <td>#58</td>
+                        <td>Florian Senechal</td>
+                        <td><img src="https://i.ibb.co/jg7fgGL/free-icon-france-206657.png"></td>
+                        <td>85</td>
+                        </tr>
+                        <tr>
+                        <td>#207</td>
+                        <td>Luka Mezdec</td>
+                        <td><img src="https://i.ibb.co/dfv8yf6/free-icon-slovenia-206842.png"></td>
+                        <td>85</td>
+                        </tr>
+                        <tr>
+                        <td>#28</td>
+                        <td>Adam Yates</td>
+                        <td><img src="https://i.ibb.co/jrtg6h2/free-icon-united-kingdom-555417.png"></td>
+                        <td>84</td>
+                        </tr>
+                        <tr>
+                        <td>#11</td>
+                        <td>Primos Roglic</td>
+                        <td><img src="https://i.ibb.co/dfv8yf6/free-icon-slovenia-206842.png"></td>
+                        <td>84</td>
+                        </tr>
+                        <tr>
+                        <td>#111</td>
+                        <td>Romain Bardet</td>
+                        <td><img src="https://i.ibb.co/jg7fgGL/free-icon-france-206657.png"></td>
+                        <td>84</td>
+                        </tr>
+                        <tr>
+                        <td>#14</td>
+                        <td>Sepp Kuss</td>
+                        <td><img src="https://i.ibb.co/MfX5rcp/free-icon-united-states-206626.png"></td>
+                        <td>83</td>
+                        </tr>
+                        <tr>
+                        <td>#98</td>
+                        <td>Michael Storer</td>
+                        <td><img src="https://i.ibb.co/MNZBZpX/free-icon-australia-206618.png"></td>
+                        <td>83</td>
+                        </tr>
+                        <tr>
+                        <td>#175</td>
+                        <td>Bauke Mollema</td>
+                        <td><img src="https://i.ibb.co/2c08g8m/free-icon-netherlands-206615.png"></td>
+                        <td>82</td>
+                        </tr>
+                        <tr>
+                        <td>#3</td>
+                        <td>Mikkel Bjerg</td>
+                        <td><img src="https://i.ibb.co/88HXWTJ/free-icon-denmark-2151310.png"></td>
+                        <td>82</td>
+                        </tr>
+                        <tr>
+                        <td>#84</td>
+                        <td>Matej Mohoric</td>
+                        <td><img src="https://i.ibb.co/dfv8yf6/free-icon-slovenia-206842.png"></td>
+                        <td>82</td>
+                        </tr>
+                        <tr>
+                        <td>#46</td>
+                        <td>Nils Pollit</td>
+                        <td><img src="https://i.ibb.co/GHXgJQJ/free-icon-germany-555613.png"></td>
+                        <td>81</td>
+                        </tr>
+                        <tr>
+                        <td>#53</td>
+                        <td>Andrea Bagioli</td>
+                        <td><img src="https://i.ibb.co/R6wBPxr/premium-icon-italy-3373278.png"></td>
+                        <td>81</td>
+                        </tr>
+                        <tr>
+                        <td>#65</td>
+                        <td>Gregor Muhlberger</td>
+                        <td><img src="https://i.ibb.co/GHXgJQJ/free-icon-germany-555613.png"></td>
+                        <td>80</td>
+                        </tr>
+                        <tr>
+                        <td>#73</td>
+                        <td>Simon Geschke</td>
+                        <td><img src="https://i.ibb.co/GHXgJQJ/free-icon-germany-555613.png"></td>
+                        <td>80</td>
+                        </tr>
+                        <tr>
+                        <td>#76</td>
+                        <td>Anthony Perez</td>
+                        <td><img src="https://i.ibb.co/R6wBPxr/premium-icon-italy-3373278.png"></td>
+                        <td>79</td>
+                        </tr>
+                        <tr>
+                        <td>#107</td>
+                        <td>Kristian Sbaragli</td>
+                        <td><img src="https://i.ibb.co/R6wBPxr/premium-icon-italy-3373278.png"></td>
+                        <td>78</td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="wrap2">
+                    <button id="next2">Далее</button>
+                </div>
+            </div>
+
+            <div id="block3">
+                <h1 align="center">Правила первого круга</h1>
+                <p>В первом круге пользователю предоставлен выбор количества этапов.<br><br>Место страны на этапе определяется по времени худшего(занявшего 4 место) гонщика этой страны на рассматриваемом этапе<br><br>
+                Место страны в итоговом протоколе первого круга определяется по наименьшей сумме мест, занятой страной на этапах<br><br>При равенстве этого показателя - по более высокому месту лучшего гонщика страны в личном зачете.<br><br>
+                Во второй круг проходят гонщики 4 лучшие страны первого круга.
+                </p>
+                <div class="wrap3">
+                    <button id="next3">Далее</button>
+                </div>
+            </div>
+
+            <div id="block4">
+                <h1 align="center">Выберите количество этапов</h1>
+                <div class="blockbuttons">
+                    <a href="#" type="button" id="2">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Два этапа
+                    </a>
+
+                    <a href="#" type="button" id="3">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Три этапа
+                    </a>
+                </div>
+
+                <div class="blockbuttons1">
+                    <a href="#" type="button" id="4">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Четыре этапа
+                    </a>
+
+                    <a href="#" type="button" id="5">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Пять этапов
+                </a>
+                </div>     
+            </div>
+
+            <div id="blockload">
+                <div class="firstround">
+                    <button id="startfirstround">Начать первый круг</button>
+                </div>
+            </div>
+
+            <div id="blockfirstround">
+                <h1 align="center" id="header"></h1>
+                <h2 id="place" align="center">Предварительные места стран</h2>
+                <div id="tableresult"></div>
+                <div class="wrap4">
+                    <button id="nextstage">Далее</button>
+                </div>
+                <div class="wrap5">
+                    <button id="gototalresult" style="display: none;">Итоги первого круга</button>
+                </div>
+            </div>
+
+            <div id="totalresult">
+                <h1 align="center">Личный зачет гонщиков после первого круга</h1>
+                <div id="tabletotalresult"></div>
+                <div class="wrap6">
+                    <button id="clicktotalcountry">Далее</button>
+                </div>     
+            </div>
+
+            <div id="totalresultcountry">
+                <h1 align="center">Во второй круг проходят страны</h1>
+                <div id="tabletotalresultcountry"></div>
+                <div class="wrap7">
+                    <button id="secondround">Ко второму кругу</button>
+                </div>     
+            </div>
+
+            <div id="infosecondround">
+                <h1 align="center">Правила второго круга </h1>
+                <p>Во втором круге участвуют гонщики 4 лучших стран первого круга.<br><br>Второй круг проходит в два этапа.<br><br>Место страны на этапе определяется по времени лучшего(занявшего 1 место) гонщика этой страны на рассматриваемом этапе<br><br>
+                Место страны в итоговом протоколе второго круга определяется по наименьшей сумме мест, занятой страной на этапах<br><br>При равенстве этого показателя - по среднему рейтингу всех гонщиков страны.
+                </p>
+                <div class="wrap3">
+                    <button id="loadsecondround">Далее</button>
+                </div>
+            </div>
+
+            <div id="blockload1">
+                <button id="startsecondround">Начать второй круг</button>
+            </div>
+
+            <div id="blocksecondresult">
+                <h1 align="center" id ="header1">Второй круг</h1>
+                <h2 id="place" align="center">Предварительные места стран</h2>
+                <div id="tablesecondresult"></div>
+                <div class="wrap8">
+                    <button id="nextstage1">Далее</button>
+                </div>
+                <div class="wrap9">
+                    <button id="gofullresult" style="display: none;">Итоги чемпионтата</button>
+                </div>
+            </div>
+
+            <div id="fullresultriders">
+                <h1 align="center">Итоги чемпионата по гонщикам</h1>
+                <div id="tablefullresult"></div>
+                <div class="wrap10">
+                    <button id="gofullresultcountry">Далее</button>
+                </div>     
+            </div>
+
+            <div id="fullresultcountry">
+                <h1 align="center">Итоги чемпионата по странам</h1>
+                <div id="tablefullresultcountry"></div>
+                <div class="wrap11">
+                    <button id="startwinners"><span style="font-size: 20px;">🎉</span></button>
+                </div>     
+            </div>
+
+            <div id="winners">
+                <h1 align="center">Поздравляем!</h1>
+                <div id="winnerstable"></div>    
+            </div>
+                
+        </body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+        <script>
+
+            // Переменная для хранения количества этапов на первом круге
+
+            let stage = 0;
+
+            // Скрипт jQuery для эффектов и перемещения между слайдами
+    
+            $(document).ready(function() {
+                $("#block").fadeIn(2000);
+            });
+
+            $("#next").click(function() {
+                $("#block").slideToggle();
+                $("#block1").fadeIn(2000);
+            });
+
+            $("#next1").click(function() {
+                $("#block1").slideToggle();
+                $("#block2").fadeIn(2000);
+            });
+
+            $("#next2").click(function() {
+                $("#block2").slideToggle();
+                $("#block3").fadeIn(2000);
+            });
+
+            $("#next3").click(function() {
+                $("#block3").slideToggle();
+                $("#block4").fadeIn(2000);
+            }); 
+
+            $("#2").click(function() {
+                stage = +$(this).attr('id');
+                let consoletext = `Выбрано количесто этапов на первом круге: ${stage}`;
+                console.log(consoletext);
+                $("#block4").slideToggle();
+                $("#blockload").fadeIn();     
+            });
+    
+            $("#3").click(function() {
+                stage = +$(this).attr('id');
+                let consoletext = `Выбрано количесто этапов на первом круге: ${stage}`;
+                console.log(consoletext);
+                $("#block4").slideToggle();
+                $("#blockload").fadeIn();                     
+            });
+
+            $("#4").click(function() {
+                stage = +$(this).attr('id');
+                let consoletext = `Выбрано количесто этапов на первом круге: ${stage}`;
+                console.log(consoletext);
+                $("#block4").slideToggle();
+                $("#blockload").fadeIn();
+            });
+
+            $("#5").click(function() {
+                stage = +$(this).attr('id');
+                let consoletext = `Выбрано количесто этапов на первом круге: ${stage}`;
+                console.log(consoletext);
+                $("#block4").slideToggle();
+                $("#blockload").fadeIn();     
+            });
+
+            $("#startfirstround").click(function() {
+                $("#blockload").slideToggle();
+                $("#tableresult").html(startRaceFirst());
+                $("#blockfirstround").fadeIn(2000);
+            });
+
+            $("#nextstage").click(function() {
+                $("#blockfirstround").slideToggle();
+                $('#tableresult').empty();
+                $("#tableresult").html(startRaceFirst());
+                $("#blockfirstround").fadeIn(2000);
+            });
+
+            $("#gototalresult").click(function() {
+                $("#blockfirstround").slideToggle();
+                $("#tabletotalresult").html(totalFirstRound());
+                $("#totalresult").fadeIn(2000);
+            });
+            
+            $("#clicktotalcountry").click(function() {
+                $("#totalresult").slideToggle();
+                $("#tabletotalresultcountry").html(printCountrySecondRound(countrySecondRound));
+                $("#totalresultcountry").fadeIn(2000);
+            });
+            
+            $("#secondround").click(function() {
+                let reload = confirm("Перейти ко второму кругу?");
+                if (reload == true) {
+                    $("#totalresultcountry").slideToggle();
+                    $("#infosecondround").fadeIn(2000);
+                }
+            }); 
+
+            $("#loadsecondround").click(function() {
+                $("#infosecondround").slideToggle();
+                $("#blockload1").fadeIn(2000);
+            });
+
+            $("#startsecondround").click(function() {
+                $("#blockload1").slideToggle();
+                $("#tablesecondresult").html(startRaceSecond());
+                $("#blocksecondresult").fadeIn(2000);
+            });
+
+            $("#nextstage1").click(function() {
+                $("#blocksecondresult").slideToggle();
+                $('#tablesecondresult').empty();
+                $("#tablesecondresult").html(startRaceSecond());
+                $("#blocksecondresult").fadeIn(2000);
+            });
+
+
+            $("#gofullresult").click(function() {
+                $("#blocksecondresult").slideToggle();
+                $("#tablefullresult").html(printFullResultRiders());
+                $("#fullresultriders").fadeIn(2000);
+            });
+
+            $("#gofullresultcountry").click(function() {
+                $("#fullresultriders").slideToggle();
+                $("#tablefullresultcountry").html(printFullResultCountry());
+                $("#fullresultcountry").fadeIn(2000);
+            });
+
+            $("#startwinners").click(function() {
+                $("#fullresultcountry").slideToggle();
+                setTimeout(startAnimation, 1500);
+                $("#winnerstable").html(printWinners());
+                $("#winners").fadeIn(2000);
+            });
+                
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.1.2/dist/confetti.browser.min.js"></script>
+
+
+        <script>
+
+            function startAnimation () {
+                let end = Date.now() + (5 * 1000);
+                let colors = ['#000', '#ff0000', '#f3f3f3'];
+                (function frame() {
+                    confetti({
+                        particleCount: 2,
+                        angle: 60,
+                        spread: 55,
+                        origin: {
+                            x: 0
+                        },
+                        colors: colors
+                    });
+                    confetti({
+                        particleCount: 3,
+                        angle: 120,
+                        spread: 55,
+                        origin: {
+                            x: 1
+                        },
+                        colors: colors
+                    });
+                    if (Date.now() < end) {
+                        requestAnimationFrame(frame);
+                    }
+                }());
+            };
+        </script>
+  
+        <script>
+
+            "use strict"
+
+            // База с иконками стран
+
+            // Иконки стран 32 х 32
+
+            const iconAustraliaSmall = new Image().src = "https://i.ibb.co/MNZBZpX/free-icon-australia-206618.png";
+            const iconBelgiumSmall = new Image().src = "https://i.ibb.co/fqdh5c5/free-icon-belgium-330520.png";
+            const iconDenmarkSmall = new Image().src = "https://i.ibb.co/88HXWTJ/free-icon-denmark-2151310.png";
+            const iconFranceSmall = new Image().src = "https://i.ibb.co/jg7fgGL/free-icon-france-206657.png";
+            const iconGermanySmall = new Image().src = "https://i.ibb.co/GHXgJQJ/free-icon-germany-555613.png";
+            const iconGreatBritianSmall = new Image().src = "https://i.ibb.co/jrtg6h2/free-icon-united-kingdom-555417.png";
+            const iconItalySmall = new Image().src = "https://i.ibb.co/R6wBPxr/premium-icon-italy-3373278.png";
+            const iconNetherlandsSmall = new Image().src = "https://i.ibb.co/2c08g8m/free-icon-netherlands-206615.png";
+            const iconSloveniaSmall = new Image().src = "https://i.ibb.co/dfv8yf6/free-icon-slovenia-206842.png";
+            const iconUSASmall = new Image().src = "https://i.ibb.co/MfX5rcp/free-icon-united-states-206626.png";
+
+            // Иконки стран 64 х 64
+
+            const iconAustraliaMedium = new Image().src = "https://i.ibb.co/SBmgrnd/free-icon-australia-3909435.png";
+            const iconBelgiumMedium = new Image().src = "https://i.ibb.co/YhvS0vn/free-icon-belgium-197583.png";
+            const iconDenmarkMedium = new Image().src = "https://i.ibb.co/0G6W9RZ/premium-icon-denmark-5372740.png"
+            const iconFranceMedium = new Image().src = "https://i.ibb.co/Kj55Fh7/free-icon-france-197560.png";
+            const iconGermanyMedium = new Image().src = "https://i.ibb.co/tsx3L1M/premium-icon-germany-5315745.png";
+            const iconGreatBritianMedium = new Image().src = "https://i.ibb.co/3Tqhv9q/free-icon-united-kingdom-197374.png";
+            const iconItalyMedium = new Image().src = "https://i.ibb.co/FYM5jpR/free-icon-italy-197626.png";
+            const iconNetherlandsMedium = new Image().src = "https://i.ibb.co/wW8zm8m/free-icon-netherlands-197441.png";
+            const iconSloveniaMedium = new Image().src = "https://i.ibb.co/w6KhL2T/free-icon-slovenia-197633.png";
+            const iconUSAMedium = new Image().src = "https://i.ibb.co/HNFDxH1/free-icon-united-states-197484.png";
+
+            // Иконки стран 128 х 128
+
+            const iconAustraliaLarge = new Image().src = "https://i.ibb.co/r76jXKc/free-icon-australia-3909435.png";
+            const iconBelgiumLarge = new Image().src = "https://i.ibb.co/PhDxbCd/free-icon-belgium-197583.png";
+            const iconDenmarkLarge = new Image().src = "https://i.ibb.co/rQjN5Bc/premium-icon-denmark-5372740.png";
+            const iconFranceLarge = new Image().src = "https://i.ibb.co/v4ShDh1/free-icon-france-197560.png";
+            const iconGermanyLarge = new Image().src = "https://i.ibb.co/2vCjzKy/premium-icon-germany-5315745.png";
+            const iconGreatBritianLarge = new Image().src = "https://i.ibb.co/ZG8GfVr/free-icon-united-kingdom-197374.png";
+            const iconItalyLarge = new Image().src = "https://i.ibb.co/tJbmXrJ/free-icon-italy-197626.png";
+            const iconNetherlandsLarge = new Image().src = "https://i.ibb.co/xFkY8FZ/free-icon-netherlands-323275.png";
+            const iconSloveniaLarge = new Image().src = "https://i.ibb.co/fHdjzSz/free-icon-slovenia-197633.png";
+            const iconUSALarge = new Image().src = "https://i.ibb.co/f1r3J3Y/free-icon-united-states-197484.png";
+
+            //  Данные гонщиков (номер, имя, фамилия, рейтинг, страна)
+
+            let riderData = [
+            ["№ 16", "Wout", "van Aert", 97, "Belgium"],
+            ["№ 1", "Tajey", "Pogochar", 96, "Slovenia"],
+            ["№ 51", "Fabio", "Jakobsen", 96, "Netherlands"],
+            ["№ 146", "Magnus-Cort", "Nielsen", 95, "Denmark"],
+            ["№ 15", "Christophe", "Laporte", 94, "France"],
+            ["№ 105", "Jasper", "Philipsen", 94, "Belgium"],
+            ["№ 24", "Filippo", "Ganna", 93, "Italy"],
+            ["№ 44", "Lennard", "Kamna", 93, "Germany"],
+            ["№ 171", "Mads", "Pedersen", 92, "Denmark"],
+            ["№ 91", "David", "Gaudu", 91, "France"],
+            ["№ 204", "Dylan", "Groenewegen", 90, "Netherlands"],
+            ["№ 147", "Neilson", "Powless", 90, "USA"],
+            ["№ 193", "Simon", "Clarke", 90, "Australia"],
+            ["№ 21", "Geraint", "Thomas", 89, "Great Britian"],
+            ["№ 86", "Dylan", "Teuns", 89, "Belgium"],
+            ["№ 33", "Kobe", "Goossens", 88, "Belgium"],
+            ["№ 88", "Fred", "Wright", 88, "Great Britian"],
+            ["№ 201", "Michael", "Matthews", 88, "Australia"],
+            ["№ 64", "Matteo", "Jorgenson", 87, "USA"],
+            ["№ 57", "Michael", "Morkov", 87, "Denmark"],
+            ["№ 25", "Thomas", "Pidcock", 86, "Great Britian"],
+            ["№ 127", "Taco", "van der Hoorn", 86, "Netherlands"],
+            ["№ 161", "Caleb", "Ewan", 86, "Australia"],
+            ["№ 176", "Quinn", "Simmons", 86, "USA"],
+            ["№ 58", "Florian", "Senechal", 85, "France"],
+            ["№ 207", "Luka", "Mezgec", 85, "Slovenia"],
+            ["№ 28", "Adam", "Yates", 84, "Great Britian"],
+            ["№ 11", "Primos", "Roglic", 84, "Slovenia"],
+            ["№ 111", "Romain", "Bardet", 84, "France"],
+            ["№ 14", "Sepp", "Kuss", 83, "USA"],
+            ["№ 98", "Michael", "Storer", 83, "Australia"],
+            ["№ 175", "Bauke", "Mollema", 82, "Netherlands"],
+            ["№ 3", "Mikkel", "Bjerg", 82, "Denmark"],
+            ["№ 84", "Matej", "Mohoric", 82, "Slovenia"],
+            ["№ 46", "Nils", "Pollit", 81, "Germany"],
+            ["№ 53", "Andrea", "Bagioli", 81, "Italy"],
+            ["№ 65", "Gregor", "Muhlberger", 80, "Germany"],
+            ["№ 73", "Simon", "Geschke", 80, "Germany"],
+            ["№ 76", "Anthony", "Perez", 79, "Italy"],
+            ["№ 107", "Kristian", "Sbaragli", 78, "Italy"],
+            ];
+
+            // Страны участники
+
+            let countryData = ["Australia", "Belgium", "Denmark", "France", "Germany", "Great Britian", "Italy", "Netherlands", "Slovenia", "USA"];
+
+        </script>
+
+        <script>
+            
+            "use strict"
+
+            // Класс для формирования объекта велосипедиста
+
+            class Cyclist {
+                constructor(number, name, surname, rating, country) {
+                this.number = number;
+                this.name = name;
+                this.surname = surname;
+                this.rating = rating;
+                this.country = country;
+                this.points = 0;
+                this.time = "";
+                }
+
+                getFlag () {
+                    return `<img src=${this.flag}>`;
+                }
+
+                getName () {
+                    return `${this.name} ${this.surname}`;
+                }
+
+                getRiders () {
+                    return `${this.number} ${this.name} ${this.surname}`;
+                }
+
+                getPoints () {
+                    return this.points;
+                }
+
+                getTime () {
+                    return this.time;
+                }
+
+                getCountry () {
+                    return this.country;
+                }
+            }
+
+            // Класс для формирования объекта страны
+            
+            class Conutry {
+                constructor(country) {
+                    this.country = country;
+                    this.rating = 0;
+                    this.points = 0;
+                }
+
+                getRating () {
+                    return this.rating;
+                }
+
+                getPoints () {
+                    return this.points;
+                }
+
+                getFlagMedium () {
+                    return `<img src=${this.flagMedium}>`;
+                }
+
+                getFlagLarge () {
+                    return `<img src=${this.flagLarge}>`;
+                }
+
+                getNameCountry () {
+                    return this.country;
+                }
+            }
+
+            // Класс для формирования лучшего гонщика страны по личному зачету после перовго круга
+
+            class bestPlaceRidersCountry {
+                constructor(country, bestPlace) {
+                    this.country = country;
+                    this.bestPlace = bestPlace;
+                }
+
+                getBestPlace () {
+                    return this.bestPlace;
+                }
+            }
+
+            // Формирование базы данных для стран участников
+
+            function dataCountry (countryData) {
+                let array = [];
+                for (let i = 0; i < countryData.length; i++) {
+                    let country = new Conutry(countryData[i]);
+                    switch (countryData[i]) {
+
+                        case "Australia":
+                        country.flagMedium = iconAustraliaMedium;
+                        country.flagLarge = iconAustraliaLarge;
+                        array.push(country);
+                        break;
+
+                        case "Belgium":
+                        country.flagMedium = iconBelgiumMedium;
+                        country.flagLarge = iconBelgiumLarge;
+                        array.push(country);
+                        break;
+
+                        case "Denmark":
+                        country.flagMedium = iconDenmarkMedium;
+                        country.flagLarge = iconDenmarkLarge;
+                        array.push(country);
+                        break;
+
+                        case "France":
+                        country.flagMedium = iconFranceMedium;
+                        country.flagLarge = iconFranceLarge;
+                        array.push(country);
+                        break;
+
+                        case "Germany":
+                        country.flagMedium = iconGermanyMedium;
+                        country.flagLarge = iconGermanyLarge;
+                        array.push(country);
+                        break;
+
+                        case "Great Britian":
+                        country.flagMedium = iconGreatBritianMedium;
+                        country.flagLarge = iconGreatBritianLarge;
+                        array.push(country);
+                        break;
+
+                        case "Italy":
+                        country.flagMedium = iconItalyMedium;
+                        country.flagLarge = iconItalyLarge;
+                        array.push(country);
+                        break;
+
+                        case "Netherlands":
+                        country.flagMedium = iconNetherlandsMedium;
+                        country.flagLarge = iconNetherlandsLarge;
+                        array.push(country);
+                        break;
+
+                        case "Slovenia":
+                        country.flagMedium = iconSloveniaMedium;
+                        country.flagLarge = iconSloveniaLarge;
+                        array.push(country);
+                        break;
+
+                        case "USA":
+                        country.flagMedium = iconUSAMedium;
+                        country.flagLarge = iconUSALarge;
+                        array.push(country);
+                        break;
+                    }
+                }
+                return array;
+            }
+
+            const countryBase = dataCountry(countryData);
+            console.log("База данных стран:");
+            console.log(countryBase);
+
+            // Формирование базы данных для гонщиков
+
+            function dataRiders(riderData) {
+                let array = [];
+                for (let i = 0; i < riderData.length; i++) {
+                    let data = riderData[i];
+                    let rider = new Cyclist(data[0], data[1], data[2], data[3], data[4]);
+                    switch (rider.country) {
+
+                        case "Australia":
+                        rider.flag = iconAustraliaSmall;
+                        countryBase[0].rating = countryBase[0].getRating() + data[3];
+                        array.push(rider);
+                        break;
+
+                        case "Belgium":
+                        rider.flag = iconBelgiumSmall;
+                        countryBase[1].rating = countryBase[1].getRating() + data[3];
+                        array.push(rider);
+                        break;
+
+                        case "Denmark":
+                        rider.flag = iconDenmarkSmall;
+                        countryBase[2].rating = countryBase[2].getRating() + data[3];
+                        array.push(rider);
+                        break;
+
+                        case "France":
+                        rider.flag = iconFranceSmall;
+                        countryBase[3].rating = countryBase[3].getRating() + data[3];
+                        array.push(rider);
+                        break;
+
+                        case "Germany":
+                        rider.flag = iconGermanySmall;
+                        countryBase[4].rating = countryBase[4].getRating() + data[3];
+                        array.push(rider);
+                        break;
+
+                        case "Great Britian":
+                        rider.flag = iconGreatBritianSmall;
+                        countryBase[5].rating = countryBase[5].getRating() + data[3];
+                        array.push(rider);
+                        break;
+
+                        case "Italy":
+                        rider.flag = iconItalySmall;
+                        countryBase[6].rating = countryBase[6].getRating() + data[3];
+                        array.push(rider);
+                        break;
+
+                        case "Netherlands":
+                        rider.flag = iconNetherlandsSmall;
+                        countryBase[7].rating = countryBase[7].getRating() + data[3];
+                        array.push(rider);
+                        break;
+
+                        case "Slovenia":
+                        rider.flag = iconSloveniaSmall;
+                        countryBase[8].rating = countryBase[8].getRating() + data[3];
+                        array.push(rider);
+                        break;
+                        
+                        case "USA":
+                        rider.flag = iconUSASmall;
+                        countryBase[9].rating = countryBase[9].getRating() + data[3];
+                        array.push(rider);
+                        break;   
+                    }
+                }
+                return array;
+            }
+
+            const ridersBase = dataRiders(riderData);
+            console.log("База данных велогонщиков:")
+            console.log(ridersBase);
+
+            // Счетчик этапов по первому кругу
+
+            let checkStage = 1;
+
+            // Старт первого круга чемпионата
+
+            function startRaceFirst () {
+
+                // Генерация мест на этапе, времени, начисление очков гонщикам по результатам этапа
+
+                function generateResultRiders (ridersBase) {
+                    let result = [];
+                    result = JSON.parse(JSON.stringify(ridersBase));
+                    result.sort(() => Math.random() - 0.5);
+                    let minutes = Math.round(30 - 0.5 + Math.random() * (50 - 30 + 1));
+                    let seconds = Math.round(Math.random() * 60);
+                    let winnerPoints = 80;
+                    for (let i = 0; i < result.length; i++) {
+                        let value = result[i];
+                        let surname = value.surname;
+                        let obj = ridersBase.find(rider => rider.surname === surname);
+                        let secondgap = Math.round(Math.random() * 60);
+                        let newseconds = secondgap + seconds;
+                        if (newseconds >= 60) {
+                            minutes++;
+                            seconds = newseconds - 60;
+                            value.time = `${minutes}m ${seconds}s`;
+                            obj.points = obj.getPoints() + winnerPoints;
+                        } else {
+                            value.time = `${minutes}m ${newseconds}s`;
+                            obj.points = obj.getPoints() + winnerPoints;
+                            seconds = newseconds;
+                        }
+                        winnerPoints = winnerPoints - 2;
+                    }
+                    return result;
+                }
+
+                let stageResultsRiders = generateResultRiders(ridersBase);
+                console.log(`Результат этапа ${checkStage} Круг 1 по гонщикам:`);
+                console.log(stageResultsRiders);
+
+                // Распределение мест стран по результату этапа
+
+                function generateResultCountry (stageResultsRiders) {
+                    let boolean = [false, false, false, false, false, false, false, false, false, false];
+                    let array = [];
+                    let countryPoint = 10;
+
+                    for (let i = stageResultsRiders.length - 1; i >= 0; i--) {    
+                        let country = stageResultsRiders[i].country;
+                        switch (country) {
+
+                            case "Australia":
+                            if (boolean[0] == false) {
+                                countryBase[0].points = countryBase[0].getPoints() + countryPoint;
+                                countryPoint--;
+                                array.unshift(countryBase[0]);
+                                boolean[0] = true;
+                            }
+                            break;
+
+                            case "Belgium":
+                            if (boolean[1] == false) {
+                                countryBase[1].points = countryBase[1].getPoints() + countryPoint;
+                                countryPoint--;
+                                array.unshift(countryBase[1]);
+                                boolean[1] = true;
+                            }
+                            break;
+
+                            case "Denmark":
+                            if (boolean[2] == false) {
+                                countryBase[2].points = countryBase[2].getPoints() + countryPoint;
+                                countryPoint--;
+                                array.unshift(countryBase[2]);
+                                boolean[2] = true;
+                            }
+                            break;
+
+                            case "France":
+                            if (boolean[3] == false) {
+                                countryBase[3].points = countryBase[3].getPoints() + countryPoint;
+                                countryPoint--;
+                                array.unshift(countryBase[3]);
+                                boolean[3] = true;
+                            }
+                            break;
+
+                            case "Germany":
+                            if (boolean[4] == false) {
+                                countryBase[4].points = countryBase[4].getPoints() + countryPoint;
+                                countryPoint--;
+                                array.unshift(countryBase[4]);
+                                boolean[4] = true;
+                            }
+                            break;
+
+                            case "Great Britian":
+                            if (boolean[5] == false) {
+                                countryBase[5].points = countryBase[5].getPoints() + countryPoint;
+                                countryPoint--;
+                                array.unshift(countryBase[5]);
+                                boolean[5] = true;
+                            }
+                            break;
+
+                            case "Italy":
+                            if (boolean[6] == false) {
+                                countryBase[6].points = countryBase[6].getPoints() + countryPoint;
+                                countryPoint--;
+                                array.unshift(countryBase[6]);
+                                boolean[6] = true;
+                            }
+                            break;
+
+                            case "Netherlands":
+                            if (boolean[7] == false) {
+                                countryBase[7].points = countryBase[7].getPoints() + countryPoint;
+                                countryPoint--;
+                                array.unshift(countryBase[7]);
+                                boolean[7] = true;
+                            }
+                            break;
+
+                            case "Slovenia":
+                            if (boolean[8] == false) {
+                                countryBase[8].points = countryBase[8].getPoints() + countryPoint;
+                                countryPoint--;
+                                array.unshift(countryBase[8]);
+                                boolean[8] = true;
+                            }
+                            break;
+
+                            case "USA":
+                            if (boolean[9] == false) {
+                                countryBase[9].points = countryBase[9].getPoints() + countryPoint;
+                                countryPoint--;
+                                array.unshift(countryBase[9]);
+                                boolean[9] = true;
+                            }
+                            break;    
+                        }
+                    }
+                    return array;
+                }       
+
+                let stageResultsCountry =  generateResultCountry(stageResultsRiders);
+                stageResultsCountry.sort((a, b) => a.points < b.points ? 1 : -1);
+                console.log(`Результат этапа ${checkStage} Круг 1 по странам:`);
+                console.log(stageResultsCountry);
+
+                // Функция для вывода результата этапа (первые 20 гонщиков)
+
+                function printResultsFirstTwenty (stageResultsRiders) {
+                    let table = document.createElement("table");
+                    let tableBody = document.createElement("tablebody");
+                    table.append(tableBody);
+                    let head = document.createElement("tr");
+                    tableBody.append(head);
+                    let th0 = document.createElement("th");
+                    th0.innerHTML = "Место";
+                    head.appendChild(th0);
+                    let th1 = document.createElement("th");
+                    th1.innerHTML = "Гонщик";
+                    head.appendChild(th1);
+                    let th2 = document.createElement("th");
+                    th2.innerHTML = "Страна";
+                    head.appendChild(th2);
+                    let th3 = document.createElement("th");
+                    th3.innerHTML = "Время";
+                    head.appendChild(th3);
+
+                    for (let i = 0; i < stageResultsRiders.length / 2; i++) {
+                        let surname = stageResultsRiders[i].surname;
+                        let obj = ridersBase.find(rider => rider.surname === surname);
+                        let tr = document.createElement("tr");
+                        tableBody.appendChild(tr);
+                        let td0 = document.createElement("TD");
+                        td0.innerHTML = `${[i + 1]}`;
+                        tr.appendChild(td0);
+                        let td1 = document.createElement("TD");
+                        td1.innerHTML = `${obj.getRiders()}`;
+                        tr.appendChild(td1);
+                        let td2 = document.createElement("TD");
+                        td2.innerHTML = `${obj.getFlag()}`;
+                        tr.appendChild(td2);
+                        let td3 = document.createElement("TD");
+                        td3.innerHTML = `${stageResultsRiders[i].time}`;
+                        tr.appendChild(td3);    
+                    }
+
+                  table.style.cssText=` margin-left: 50px;
+                                        margin-top: 0px;
+                                        text-align: center;
+                                        font-size: 13px;
+                                    `;
+
+                  return table;
+                }
+
+                // Функция для вывода результата этапа (остальные 20 гонщиков)
+
+                function printResultsSecondTwenty (stageResultsRiders) {
+                    let table = document.createElement("table");
+                    let tableBody = document.createElement("tablebody");
+                    table.append(tableBody);
+                    let head = document.createElement("tr");
+                    tableBody.append(head);
+                    let th0 = document.createElement("th");
+                    th0.innerHTML = "Место";
+                    head.appendChild(th0);
+                    let th1 = document.createElement("th");
+                    th1.innerHTML = "Гонщик";
+                    head.appendChild(th1);
+                    let th2 = document.createElement("th");
+                    th2.innerHTML = "Страна";
+                    head.appendChild(th2);
+                    let th3 = document.createElement("TH");
+                    th3.innerHTML = "Время";
+                    head.appendChild(th3);
+
+                    for (let i = 20; i < stageResultsRiders.length; i++) {
+                        let surname = stageResultsRiders[i].surname;
+                        let obj = ridersBase.find(rider => rider.surname === surname);
+                        let tr = document.createElement("tr");
+                        tableBody.appendChild(tr);
+                        let td0 = document.createElement("TD");
+                        td0.innerHTML = `${[i + 1]}`;
+                        tr.appendChild(td0);
+                        let td1 = document.createElement("TD");
+                        td1.innerHTML = `${obj.getRiders()}`;
+                        tr.appendChild(td1);
+                        let td2 = document.createElement("TD");
+                        td2.innerHTML = `${obj.getFlag()}`;
+                        tr.appendChild(td2);    
+                        let td3 = document.createElement("TD");
+                        td3.innerHTML = `${stageResultsRiders[i].time}`;
+                        tr.appendChild(td3);
+                    }
+
+                    table.style.cssText=`   margin-left: 450px;
+                                            margin-top: -645px;
+                                            text-align: center;
+                                            font-size: 13px;
+                                        `;
+                                        
+                  return table;
+                }
+
+                // Функция для вывода текущих мест стран после каждого этапа на первом круге
+
+                function printResultsCountrySave (stageResultsCountry) {
+                    let table = document.createElement("table");
+                    let tableBody = document.createElement("tablebody");
+                    table.append(tableBody);
+
+                    for (let i = stageResultsCountry.length - 1; i >= 0; i--) {
+                        let tr = document.createElement("tr");
+                        tableBody.appendChild(tr);
+                        let td0 = document.createElement("TD");
+                        td0.innerHTML = `${stageResultsCountry[i].getFlagMedium()}`;
+                        if (i < 6) {
+                            td0.style.filter = "grayscale(100%)";
+                        }
+                        tr.appendChild(td0)
+                        let td1 = document.createElement("TD");
+                        td1.innerHTML = `${stageResultsCountry[i].getNameCountry()}`; 
+                        tr.appendChild(td1); 
+                    }
+  
+                    table.style.cssText=`   margin-left: 1050px;
+                                            margin-top: -640px;
+                                            font-size: 13px;
+                                            text-align: center;`
+
+                    return table;
+                }  
+
+                document.getElementById("header").innerHTML = `Результат: Круг 1 Этап ${checkStage}`;
+                document.getElementById("tableresult").appendChild(printResultsFirstTwenty(stageResultsRiders));
+                document.getElementById("tableresult").appendChild(printResultsSecondTwenty(stageResultsRiders));
+                document.getElementById("tableresult").appendChild(printResultsCountrySave(stageResultsCountry));
+
+                if (checkStage == stage) {
+                    let button = document.getElementById("nextstage");
+                    button.style.cssText = `display: none;`
+                    let finalbutton = document.getElementById("gototalresult");
+                    finalbutton.style.cssText = `display: block;`;          
+                } else {
+                    checkStage++;
+                }
+            }
+
+            // Вспомогательные массивы
+
+            let ridersSecondRound = [];
+            let countrySecondRound = [];
+            let finalStandCountry = [];
+
+            // Функция для подведения итогов первого круга
+
+            function totalFirstRound () {
+
+                // Распределение гонщиков по набранным очкам в личный зачет
+
+                function totalResultRiders (ridersBase) {
+                    ridersBase.sort((a, b) => a.points < b.points ? 1 : -1);
+                    return ridersBase;
+                }
+
+                let firstRoundResultRiders = totalResultRiders(ridersBase);
+                console.log("Итоговый протокол по первому кругу среди гонщиков:");
+                console.log(firstRoundResultRiders);
+
+                // Фунцкия для вывода личного зачета гонщиков после первого этапа (первые 20 гонщиков)
+
+                function printTotalResultsFirstTwnenty (firstRoundResultRiders) {
+                    let table = document.createElement("table");
+                    let tableBody = document.createElement("tablebody");
+                    table.append(tableBody);
+                    let head = document.createElement("tr");
+                    tableBody.append(head);
+                    let th0 = document.createElement("th");
+                    th0.innerHTML = "Место";
+                    head.appendChild(th0);
+                    let th1 = document.createElement("th");
+                    th1.innerHTML = "Гонщик";
+                    head.appendChild(th1);
+                    let th2 = document.createElement("th");
+                    th2.innerHTML = "Страна";
+                    head.appendChild(th2);
+                    let th3 = document.createElement("TH");
+                    th3.innerHTML = "Points";
+                    head.appendChild(th3);
+
+                    for (let i = 0; i < firstRoundResultRiders.length / 2; i++) {
+                        let tr = document.createElement("tr");
+                        tableBody.appendChild(tr);
+                        let td0 = document.createElement("TD");
+                        td0.innerHTML = `${[i + 1]}`;
+                        tr.appendChild(td0);
+                        let td1 = document.createElement("TD");
+                        td1.innerHTML = `${firstRoundResultRiders[i].getRiders()}`;
+                        tr.appendChild(td1);
+                        let td2 = document.createElement("TD");
+                        td2.innerHTML = `${firstRoundResultRiders[i].getFlag()}`;
+                        tr.appendChild(td2);
+                        let td3 = document.createElement("TD");
+                        td3.innerHTML = `${firstRoundResultRiders[i].getPoints()}`;
+                        tr.appendChild(td3);    
+                    }
+
+                  table.style.cssText=` margin-left: 150px;
+                                        margin-top: 0px;
+                                        text-align: center;
+                                        font-size: 13px;
+                                    `;
+
+                  return table;
+                }
+
+                // Фунцкия для вывода личного зачета гонщиков после первого этапа (остальные 20 гонщиков)
+
+                function printTotalResultsSecondTwnenty (firstRoundResultRiders) {
+                    let table = document.createElement("table");
+                    let tableBody = document.createElement("tablebody");
+                    table.append(tableBody);
+                    let head = document.createElement("tr");
+                    tableBody.append(head);
+                    let th0 = document.createElement("th");
+                    th0.innerHTML = "Место";
+                    head.appendChild(th0);
+                    let th1 = document.createElement("th");
+                    th1.innerHTML = "Гонщик";
+                    head.appendChild(th1);
+                    let th2 = document.createElement("th");
+                    th2.innerHTML = "Страна";
+                    head.appendChild(th2);
+                    let th3 = document.createElement("TH");
+                    th3.innerHTML = "Points";
+                    head.appendChild(th3);
+
+                    for (let i = 20; i < firstRoundResultRiders.length; i++) {
+                        let tr = document.createElement("tr");
+                        tableBody.appendChild(tr);
+                        let td0 = document.createElement("TD");
+                        td0.innerHTML = `${[i + 1]}`;
+                        tr.appendChild(td0);
+                        let td1 = document.createElement("TD");
+                        td1.innerHTML = `${firstRoundResultRiders[i].getRiders()}`;
+                        tr.appendChild(td1);
+                        let td2 = document.createElement("TD");
+                        td2.innerHTML = `${firstRoundResultRiders[i].getFlag()}`;
+                        tr.appendChild(td2);
+                        let td3 = document.createElement("TD");
+                        td3.innerHTML = `${firstRoundResultRiders[i].getPoints()}`;
+                        tr.appendChild(td3);    
+                    }
+                    table.style.cssText=`   margin-left: 800px;
+                                            margin-top: -642px;
+                                            text-align: center;
+                                            font-size: 13px;
+                                        `;
+                    return table;
+                }
+
+                document.getElementById("tabletotalresult").appendChild(printTotalResultsFirstTwnenty(firstRoundResultRiders));
+                document.getElementById("tabletotalresult").appendChild(printTotalResultsSecondTwnenty(firstRoundResultRiders));
+
+                // Функция для нахождения лучшей позиции гонщика страны в личном зачете
+
+                function bestPlaceRiders (firstRoundResultRiders) {
+                    let array = new Array(10);
+                    let boolean = [false, false, false, false, false, false, false, false, false, false];
+
+                    for (let i = 0; i < firstRoundResultRiders.length; i++) {
+                        let country = firstRoundResultRiders[i].country;
+
+                        switch (country) {
+                             case "Australia":
+                                 if (boolean[0] == false) {
+                                     array[0] = new bestPlaceRidersCountry(country, i + 1);
+                                     boolean[0] = true;
+                                 }
+                                 break;
+
+                                 case "Belgium":
+                                 if (boolean[1] == false) {
+                                     array[1] = new bestPlaceRidersCountry(country, i + 1);
+                                     boolean[1] = true;
+                                 }
+                                 break;
+
+                                 case "Denmark":
+                                 if (boolean[2] == false) {
+                                     array[2] = new bestPlaceRidersCountry(country, i + 1);
+                                     boolean[2] = true;
+                                 }
+                                 break;
+
+                                 case "France":
+                                 if (boolean[3] == false) {
+                                     array[3] = new bestPlaceRidersCountry(country, i + 1);
+                                     boolean[3] = true;
+                                 }
+                                 break;
+
+                                 case "Germany":
+                                 if (boolean[4] == false) {
+                                     array[4] = new bestPlaceRidersCountry(country, i + 1);
+                                     boolean[4] = true;
+                                 }
+                                 break;
+
+                                 case "Great Britian":
+                                 if (boolean[5] == false) {
+                                     array[5] = new bestPlaceRidersCountry(country, i + 1);
+                                     boolean[5] = true;
+                                 }
+                                 break;
+
+                                 case "Italy":
+                                 if (boolean[6] == false) {
+                                     array[6] = new bestPlaceRidersCountry(country, i + 1);
+                                     boolean[6] = true;
+                                 }
+                                 break;
+
+                                 case "Netherlands":
+                                 if (boolean[7] == false) {
+                                     array[7] = new bestPlaceRidersCountry(country, i + 1);
+                                     boolean[7] = true;
+                                 }
+                                 break;
+
+                                 case "Slovenia":
+                                 if (boolean[8] == false) {
+                                     array[8] = new bestPlaceRidersCountry(country, i + 1);
+                                     boolean[8] = true;
+                                 }
+                                 break;
+
+                                 case "USA":
+                                 if (boolean[9] == false) {
+                                     array[9] = new bestPlaceRidersCountry(country, i + 1);
+                                     boolean[9] = true;
+                                 }
+                                 break;
+                        }
+                    }
+                    return array;
+                }
+
+                let places = bestPlaceRiders(firstRoundResultRiders);
+                console.log("Лучшие места гонщиков страны по личному зачету первого круга:")
+                console.log(places);
+
+                // Функция для распределения мест в случае равенства суммы мест после первого этапа(максимально предусмотренное совпадаение - 3 страны)
+
+                function seatCheck (countryBase, places) {
+                    let array = new Array(10);
+                    let stand = JSON.parse(JSON.stringify(countryBase));
+                    stand.sort((a, b) => a.points > b.points ? 1 : -1);
+                    stand.push(new bestPlaceRidersCountry(undefined, undefined));
+
+                    for (let i = 0; i < 10; i++) {
+                        if (stand[i].points == stand[i + 1].points && stand[i].points == stand[i + 2].points) {
+                            let swap = stand[i].country;
+                            let swap1 = stand[i + 1].country;
+                            let swap2 = stand[i + 2].country;
+                            let obj = places.find(value => value.country === swap);
+                            let obj1 = places.find(value => value.country === swap1);
+                            let obj2 = places.find(value => value.country === swap2);
+                            let helpArray = [obj, obj1, obj2];
+                            helpArray.sort((a, b) => a.bestPlace > b.bestPlace ? 1 : -1);
+                            array[i] = helpArray[0].country;
+                            array[i + 1] = helpArray[1].country;
+                            array[i + 2] = helpArray[2].country;
+                            i += 2;
+                        } else if (stand[i].points == stand[i + 1].points) {
+                            let swap = stand[i].country;
+                            let swap1 = stand[i + 1].country;
+                            let obj = places.find(value => value.country === swap);
+                            let obj1 = places.find(value => value.country === swap1);
+                            if (obj.getBestPlace() < obj1.getBestPlace()) {
+                                array[i] = obj.country;
+                                array[i + 1] = obj1.country; 
+                            } else {
+                                array[i] = obj1.country;
+                                array[i + 1] = obj.country;
+                            }
+                            i++;
+                        } else {
+                            array[i] = stand[i].country;
+                        }
+                    }
+                    return array;
+                }
+
+                finalStandCountry = seatCheck(countryBase, places);
+
+                // Добавление 4 лучших стран во второй круг
+
+                function goSecondRoundCountry (finalStandCountry, countryBase) {
+                    let array = new Array(4);
+
+                    for (let i = 0; i < array.length; i++) {
+                        let country = finalStandCountry[i];
+                        let obj = countryBase.find(value => value.country === country);
+                        obj.points = 0;
+                        array[i] = obj; 
+                    }
+                    return array;
+                }
+
+                countrySecondRound = goSecondRoundCountry(finalStandCountry, countryBase);
+                console.log("Страны во втором кргуе:");
+                console.log(countrySecondRound);
+
+                // Добавление гонщиков 4 лучших стран во второй круг
+
+                function goSecondRoundRiders (countrySecondRound, ridersBase) {
+                    let array = [];
+
+                    for (let i = 0; i < ridersBase.length; i++) {
+                        let country = ridersBase[i].getCountry();
+                        let obj = countrySecondRound.find(value => value.country === country);
+                        if (countrySecondRound.includes(obj) == true) {
+                            array.push(ridersBase[i]);
+                        }
+                    }
+                    return array;
+                }
+
+                ridersSecondRound = goSecondRoundRiders(countrySecondRound, ridersBase);
+                console.log("Гонщики во втором круге:");
+                console.log(ridersSecondRound);     
+            } 
+
+                // Вывод стран, прошедших во второй круг
+
+                function printCountrySecondRound (countrySecondRound) {
+                    let table = document.createElement("table");
+                    let tableBody = document.createElement("tablebody");
+                    table.append(tableBody);
+
+                    for (let i = 0; i < countrySecondRound.length; i++) {
+                        let tr = document.createElement("tr");
+                        tableBody.appendChild(tr);
+                        let td0 = document.createElement("TD");
+                        td0.innerHTML = `${countrySecondRound[i].getFlagLarge()}`;
+                        tr.appendChild(td0)
+                        let td1 = document.createElement("TD");
+                        td1.innerHTML = `${countrySecondRound[i].getNameCountry()}`; 
+                        tr.appendChild(td1); 
+                    }
+
+                    table.style.cssText=`   margin-left: 500px;
+                                            margin-top: 0px;
+                                            font-size: 30px;
+                                            text-align: center;`
+                    return table;
+                }
+
+                document.getElementById("tabletotalresultcountry").appendChild(printCountrySecondRound(countrySecondRound));
+
+                // Счетчик этапов во втором круге
+
+                let checkStageSecond = 1;
+
+                // Старт второго круга 
+
+                function startRaceSecond () {
+
+                    // Генерация мест на этапе, времени, начисление очков гонщикам по результатам этапа второго круга
+
+                    function generateResultRiders (ridersSecondRound) {
+                        let result = [];
+                        result = JSON.parse(JSON.stringify(ridersSecondRound));
+                        result.sort(() => Math.random() - 0.5);
+                        let minutes = Math.round(30 - 0.5 + Math.random() * (50 - 30 + 1));
+                        let seconds = Math.round(Math.random() * 60);
+                        let winnerPoints = 80;
+                        for (let i = 0; i < result.length; i++) {
+                            let value = result[i];
+                            let surname = value.surname;
+                            let obj = ridersSecondRound.find(rider => rider.surname === surname);
+                            let secondgap = Math.round(Math.random() * 60);
+                            let newseconds = secondgap + seconds;
+                            if (newseconds >= 60) {
+                                minutes++;
+                                seconds = newseconds - 60;
+                                value.time = `${minutes}m ${seconds}s`;
+                                obj.points = obj.getPoints() + winnerPoints;
+                            } else {
+                                value.time = `${minutes}m ${newseconds}s`;
+                                obj.points = obj.getPoints() + winnerPoints;
+                                seconds = newseconds;
+                            }
+                        winnerPoints = winnerPoints - 2;
+                        }
+                        return result;
+                    }
+
+                    let stageSecondResultsRiders = generateResultRiders(ridersSecondRound);
+                    console.log(`Результат этапа ${checkStageSecond} Круг 2 по гонщикам:`);
+                    console.log(stageSecondResultsRiders);
+
+                    // Формирование результата страны по условиям второго этапа    
+
+                    function generateResultCountry (stageSecondResultsRiders,countrySecondRound) {
+                        let boolean = [false, false, false, false];
+                        let countryPoint = 1;
+
+                        for (let i = 0; i < stageSecondResultsRiders.length; i++) {    
+                            let country = stageSecondResultsRiders[i].country;
+                            switch (country) {
+
+                                case finalStandCountry[0]:
+                                if (boolean[0] == false) {
+                                    let obj = countrySecondRound.find(value => value.country === finalStandCountry[0]);
+                                    obj.points = obj.getPoints() + countryPoint;
+                                    countryPoint++;
+                                    boolean[0] = true;
+                                }
+                                break;
+
+                                case finalStandCountry[1]:
+                                if (boolean[1] == false) {
+                                    let obj = countrySecondRound.find(value => value.country === finalStandCountry[1]);
+                                    obj.points = obj.getPoints() + countryPoint;
+                                    countryPoint++;
+                                    boolean[1] = true;
+                                }
+                                break;
+
+                                case finalStandCountry[2]:
+                                if (boolean[2] == false) {
+                                    let obj = countrySecondRound.find(value => value.country === finalStandCountry[2]);
+                                    obj.points = obj.getPoints() + countryPoint;
+                                    countryPoint++;
+                                    boolean[2] = true;
+                                }
+                                break;
+
+                                case finalStandCountry[3]:
+                                if (boolean[3] == false) {
+                                    let obj = countrySecondRound.find(value => value.country === finalStandCountry[3]);
+                                    obj.points = obj.getPoints() + countryPoint;
+                                    countryPoint++;
+                                    boolean[3] = true;
+                                }
+                                break;
+                            }
+                        }
+                        countrySecondRound.sort((a, b) => a.points > b.points ? 1 : -1);
+                        return countrySecondRound;
+                    }
+                    
+                    let stageResultsSecondCountry =  generateResultCountry(stageSecondResultsRiders, countrySecondRound);
+                    console.log(`Результат этапа ${checkStageSecond} Круг 2 по странам:`);
+                    console.log(stageResultsSecondCountry);
+
+                    // Вывод результатов гонщиков на этапе второго круга
+
+                    function printResultsSecondRound (stageSecondResultsRiders) {
+                        let table = document.createElement("table");
+                        let tableBody = document.createElement("tablebody");
+                        table.append(tableBody);
+                        let head = document.createElement("tr");
+                        tableBody.append(head);
+                        let th0 = document.createElement("th");
+                        th0.innerHTML = "Место";
+                        head.appendChild(th0);
+                        let th1 = document.createElement("th");
+                        th1.innerHTML = "Гонщик";
+                        head.appendChild(th1);
+                        let th2 = document.createElement("th");
+                        th2.innerHTML = "Страна";
+                        head.appendChild(th2);
+                        let th3 = document.createElement("th");
+                        th3.innerHTML = "Время";
+                        head.appendChild(th3);
+
+                        for (let i = 0; i < stageSecondResultsRiders.length; i++) {
+                            let surname = stageSecondResultsRiders[i].surname;
+                            let obj = ridersBase.find(rider => rider.surname === surname);
+                            let tr = document.createElement("tr");
+                            tableBody.appendChild(tr);
+                            let td0 = document.createElement("TD");
+                            td0.innerHTML = `${[i + 1]}`;
+                            tr.appendChild(td0);
+                            let td1 = document.createElement("TD");
+                            td1.innerHTML = `${obj.getRiders()}`;
+                            tr.appendChild(td1);
+                            let td2 = document.createElement("TD");
+                            td2.innerHTML = `${obj.getFlag()}`;
+                            tr.appendChild(td2);
+                            let td3 = document.createElement("TD");
+                            td3.innerHTML = `${stageSecondResultsRiders[i].time}`;
+                            tr.appendChild(td3);    
+                        }
+
+                            table.style.cssText=`   margin-left: 350px;
+                                                    margin-top: -290px;
+                                                    text-align: center;
+                                                    font-size: 20px;
+                                                `;
+
+                     return table;
+                    }
+
+                    // Функция для вывода текущих мест стран
+
+                    function printResultsCountrySecondRound (stageResultsSecondCountry) {
+                        let table = document.createElement("table");
+                        let tableBody = document.createElement("tablebody");
+                        table.append(tableBody);
+                        
+                        for (let i = 0; i < stageResultsSecondCountry.length; i++) {
+                            let tr = document.createElement("tr");
+                            tableBody.appendChild(tr);
+                            let td0 = document.createElement("TD");
+                            td0.innerHTML = `${stageResultsSecondCountry[i].getFlagMedium()}`;
+                            tr.appendChild(td0)
+                            let td1 = document.createElement("TD");
+                            td1.innerHTML = `${stageResultsSecondCountry[i].getNameCountry()}`; 
+                            tr.appendChild(td1); 
+                        }
+  
+                        table.style.cssText=`   margin-left: 1000px;
+                                                margin-top: 0px;
+                                                font-size: 20px;
+                                                text-align: center;`
+
+                        return table;
+                    }
+
+                    document.getElementById("header1").innerHTML = `Результат: Круг 2 Этап ${checkStageSecond}`;
+                    document.getElementById("tablesecondresult").appendChild(printResultsCountrySecondRound(stageResultsSecondCountry));
+                    document.getElementById("tablesecondresult").appendChild(printResultsSecondRound(stageSecondResultsRiders));
+
+                    if (checkStageSecond == 2) {
+                        let button = document.getElementById("nextstage1");
+                        button.style.cssText = `display: none;`
+                        let finalbutton = document.getElementById("gofullresult");
+                        finalbutton.style.cssText = `display: block;`;
+                    } else {
+                        checkStageSecond++;
+                    }
+                }
+
+                // Функция для вывода личного зачета гонщиков по итогам чемпионата
+
+                function printFullResultRiders () {
+
+                    // Функия для вывода личного зачета гонщиков по итогам чемпионата(первые 20 гонщиков)
+
+                    function printFullResultsFirstTwenty (ridersBase) {
+                        ridersBase.sort((a, b) => a.points < b.points ? 1 : -1);
+                        let table = document.createElement("table");
+                        let tableBody = document.createElement("tablebody");
+                        table.append(tableBody);
+                        let head = document.createElement("tr");
+                        tableBody.append(head);
+                        let th0 = document.createElement("th");
+                        th0.innerHTML = "Место";
+                        head.appendChild(th0);
+                        let th1 = document.createElement("th");
+                        th1.innerHTML = "Гонщик";
+                        head.appendChild(th1);
+                        let th2 = document.createElement("th");
+                        th2.innerHTML = "Страна";
+                        head.appendChild(th2);
+                        let th3 = document.createElement("th");
+                        th3.innerHTML = "Очки";
+                        head.appendChild(th3);
+
+                        for (let i = 0; i < ridersBase.length / 2; i++) {
+                            let tr = document.createElement("tr");
+                            tableBody.appendChild(tr);
+                            let td0 = document.createElement("TD");
+                            td0.innerHTML = `${[i + 1]}`;
+                            tr.appendChild(td0);
+                            let td1 = document.createElement("TD");
+                            td1.innerHTML = `${ridersBase[i].getRiders()}`;
+                            tr.appendChild(td1);
+                            let td2 = document.createElement("TD");
+                            td2.innerHTML = `${ridersBase[i].getFlag()}`;
+                            tr.appendChild(td2);
+                            let td3 = document.createElement("TD");
+                            td3.innerHTML = `${ridersBase[i].getPoints()}`;
+                            tr.appendChild(td3);    
+                        }
+
+                        table.style.cssText=`   margin-left: 200px;
+                                                margin-top: 0px;
+                                                text-align: center;
+                                                font-size: 13px;
+                                            `;
+                        return table;
+                    }
+
+                    // Функия для вывода личного зачета гонщиков по итогам чемпионата(первые 20 гонщиков)
+
+                    function printFullResultsSecondTwenty (ridersBase) {   
+                        let table = document.createElement("table");
+                        let tableBody = document.createElement("tablebody");
+                        table.append(tableBody);
+                        let head = document.createElement("tr");
+                        tableBody.append(head);
+                        let th0 = document.createElement("th");
+                        th0.innerHTML = "Место";
+                        head.appendChild(th0);
+                        let th1 = document.createElement("th");
+                        th1.innerHTML = "Гонщик";
+                        head.appendChild(th1);
+                        let th2 = document.createElement("th");
+                        th2.innerHTML = "Страна";
+                        head.appendChild(th2);
+                        let th3 = document.createElement("th");
+                        th3.innerHTML = "Очки";
+                        head.appendChild(th3);
+
+                        for (let i = 20; i < ridersBase.length; i++) {
+                            let tr = document.createElement("tr");
+                            tableBody.appendChild(tr);
+                            let td0 = document.createElement("TD");
+                            td0.innerHTML = `${[i + 1]}`;
+                            tr.appendChild(td0);
+                            let td1 = document.createElement("TD");
+                            td1.innerHTML = `${ridersBase[i].getRiders()}`;
+                            tr.appendChild(td1);
+                            let td2 = document.createElement("TD");
+                            td2.innerHTML = `${ridersBase[i].getFlag()}`;
+                            tr.appendChild(td2);
+                            let td3 = document.createElement("TD");
+                            td3.innerHTML = `${ridersBase[i].getPoints()}`;
+                            tr.appendChild(td3);    
+                        }
+
+                        table.style.cssText=`   margin-left: 780px;
+                                                margin-top: -643px;
+                                                text-align: center;
+                                                font-size: 13px;
+                                            `;
+
+                        return table;
+                    }
+
+                    document.getElementById("tablefullresult").appendChild(printFullResultsFirstTwenty(ridersBase));
+                    document.getElementById("tablefullresult").appendChild(printFullResultsSecondTwenty(ridersBase));
+
+                }
+
+                // Функция для вывода мест стран в итоговом протоколе
+
+                function printFullResultCountry () {
+
+                    // Функия для сортировки стран по рейтингу в случае равенства мест и вывод первых пяти стран
+
+                    function printTopFiveCountry (countrySecondRound, finalStandCountry) {
+                        countrySecondRound.sort(function(x1, x2) {
+                            if (x1.getPoints() < x2.getPoints()) return -1;
+                            if (x1.getPoints() > x2.getPoints()) return 1;
+                            if (x1.getRating() > x2.getRating()) return -1;
+                            if (x1.getRating() < x2.getRating()) return 1;
+                            return 0;
+                        });
+
+                        let table = document.createElement("table");
+                        let tableBody = document.createElement("tablebody");
+                        table.append(tableBody);
+                        let head = document.createElement("tr");
+                        tableBody.append(head);
+                        let th0 = document.createElement("th");
+                        th0.innerHTML = "Место";
+                        head.appendChild(th0);
+                        let th1 = document.createElement("th");
+                        head.appendChild(th1);
+                        let th2 = document.createElement("th");
+                        th2.innerHTML = "Страна";
+                        head.appendChild(th2);
+
+                        for (let i = 0; i < countrySecondRound.length; i++) {
+                            let tr = document.createElement("tr");
+                            tableBody.appendChild(tr);
+                            let td0 = document.createElement("TD");
+                            td0.innerHTML = `${[i + 1]}`;
+                            tr.appendChild(td0);
+                            let td1 = document.createElement("TD");
+                            td1.innerHTML = `${countrySecondRound[i].getFlagMedium()}`;
+                            tr.appendChild(td1);
+                            let td2 = document.createElement("TD");
+                            td2.innerHTML = `${countrySecondRound[i].getNameCountry()}`;
+                            tr.appendChild(td2);
+                        }
+
+                        let tr = document.createElement("tr");
+                        tableBody.appendChild(tr);
+                        let td0 = document.createElement("TD");
+                        td0.innerHTML = `5`;
+                        tr.appendChild(td0);
+                        let obj = countryBase.find(strana => strana.country === finalStandCountry[4]);
+                        let td1 = document.createElement("TD");
+                        td1.innerHTML = `${obj.getFlagMedium()}`;
+                        tr.appendChild(td1);
+                        let td2 = document.createElement("TD");
+                        td2.innerHTML = `${obj.getNameCountry()}`;
+                        tr.appendChild(td2);
+
+                        table.style.cssText=`   margin-left: 270px;
+                                                margin-top: 0px;
+                                                text-align: center;
+                                                font-size: 20px;
+                                            `;
+
+                        return table;
+                    } 
+
+                    // Вывод оставшихся пяти стран в итоговый протокол
+
+                    function printSecondFiveCountry (finalStandCountry) {
+                        let table = document.createElement("table");
+                        let tableBody = document.createElement("tablebody");
+                        table.append(tableBody);
+                        let head = document.createElement("tr");
+                        tableBody.append(head);
+                        let th0 = document.createElement("th");
+                        th0.innerHTML = "Место";
+                        head.appendChild(th0);
+                        let th1 = document.createElement("th");
+                        head.appendChild(th1);
+                        let th2 = document.createElement("th");
+                        th2.innerHTML = "Страна";
+                        head.appendChild(th2);
+
+                        for (let i = 5; i < finalStandCountry.length; i++) {
+                            let obj = countryBase.find(strana => strana.country === finalStandCountry[i]);
+                            let tr = document.createElement("tr");
+                            tableBody.appendChild(tr);
+                            let td0 = document.createElement("TD");
+                            td0.innerHTML = `${[i + 1]}`;
+                            tr.appendChild(td0);
+                            let td1 = document.createElement("TD");
+                            td1.innerHTML = `${obj.getFlagMedium()}`;
+                            tr.appendChild(td1);
+                            let td2 = document.createElement("TD");
+                            td2.innerHTML = `${obj.getNameCountry()}`;
+                            tr.appendChild(td2);
+                        }
+
+                        table.style.cssText=`   margin-left: 800px;
+                                                margin-top: -396px;
+                                                text-align: center;
+                                                font-size: 20px;
+                                            `;
+
+                        return table;
+                    }
+
+                    document.getElementById("tablefullresultcountry").appendChild(printTopFiveCountry(countrySecondRound, finalStandCountry));
+                    document.getElementById("tablefullresultcountry").appendChild(printSecondFiveCountry(finalStandCountry));   
+                }
+
+                // Вывод первой тройки стран, их гонщиков а также лучшего гонщика чемпионата
+
+                function printWinners () {
+
+                    // Фунция вывода страны, занявшей первое место
+
+                    function printFirstPlace (countrySecondRound,ridersBase) {
+                        let array = [];
+
+                        for (let i = 0; i < ridersBase.length; i++) {
+                            if (countrySecondRound[0].getNameCountry() === ridersBase[i].getCountry()) {
+                                array.push(ridersBase[i].getRiders());
+                            }
+                        }
+
+                        let table = document.createElement("table");
+                        let tableBody = document.createElement("tablebody");
+                        table.append(tableBody);
+                        let tr = document.createElement("tr");
+                        tableBody.appendChild(tr);
+                        let td = document.createElement("TD");
+                        td.innerHTML = "1 место";
+                        tr.appendChild(td);
+                        let tr0 = document.createElement("tr");
+                        tableBody.appendChild(tr0);
+                        let td0 = document.createElement("TD");
+                        td0.innerHTML = `${countrySecondRound[0].getFlagLarge()}`;
+                        tr0.appendChild(td0);
+                        let tr1 = document.createElement("tr");
+                        tableBody.appendChild(tr1);
+                        let td1 = document.createElement("TD");
+                        td1.innerHTML = `${countrySecondRound[0].getNameCountry()}`;
+                        tr1.appendChild(td1);
+
+                        for (let j = 0; j < array.length; j++) {
+                            let tr = document.createElement("tr");
+                            tableBody.appendChild(tr);
+                            let td = document.createElement("TD");
+                            td.innerHTML = array[j];
+                            tr.appendChild(td);
+                        }
+
+                        table.style.cssText=`   margin-left: 540px;
+                                                margin-top: 20px;
+                                                text-align: center;
+                                                font-size: 20px;
+                                                background-color: rgb(255, 215, 0);
+                                                border-radius: 25px;
+                                                color: black;
+                                                width: 250px;
+                                            `;
+                        return table;
+                    }
+
+                    // Фунция вывода страны, занявшей второе место
+
+                    function printSecondPlace (countrySecondRound,ridersBase) {
+                        let array = [];
+
+                        for (let i = 0; i < ridersBase.length; i++) {
+                            if (countrySecondRound[1].getNameCountry() === ridersBase[i].getCountry()) {
+                                array.push(ridersBase[i].getRiders());
+                            }
+                        }
+
+                        let table = document.createElement("table");
+                        let tableBody = document.createElement("tablebody");
+                        table.append(tableBody);
+                        let tr = document.createElement("tr");
+                        tableBody.appendChild(tr);
+                        let td = document.createElement("TD");
+                        td.innerHTML = "2 место";
+                        tr.appendChild(td);
+                        let tr0 = document.createElement("tr");
+                        tableBody.appendChild(tr0);
+                        let td0 = document.createElement("TD");
+                        td0.innerHTML = `${countrySecondRound[1].getFlagLarge()}`;
+                        tr0.appendChild(td0);
+                        let tr1 = document.createElement("tr");
+                        tableBody.appendChild(tr1);
+                        let td1 = document.createElement("TD");
+                        td1.innerHTML = `${countrySecondRound[1].getNameCountry()}`;
+                        tr1.appendChild(td1);
+
+                        for (let j = 0; j < array.length; j++) {
+                            let tr = document.createElement("tr");
+                            tableBody.appendChild(tr);
+                            let td = document.createElement("TD");
+                            td.innerHTML = array[j];
+                            tr.appendChild(td);
+                        }
+
+                        table.style.cssText=`   margin-left: 170px;
+                                                margin-top: -270px;
+                                                text-align: center;
+                                                font-size: 20px;
+                                                background-color: rgb(192, 192, 192);
+                                                border-radius: 25px;
+                                                color: black;
+                                                width: 250px;
+                                            `;
+                        return table;
+                    }
+
+                    // Фунция вывода страны, занявшей третье место
+
+                    function printThirdPlace (countrySecondRound,ridersBase) {
+                        let array = [];
+
+                        for (let i = 0; i < ridersBase.length; i++) {
+                            if (countrySecondRound[2].getNameCountry() === ridersBase[i].getCountry()) {
+                                array.push(ridersBase[i].getRiders());
+                            }
+                        }
+                        let table = document.createElement("table");
+                        let tableBody = document.createElement("tablebody");
+                        table.append(tableBody);
+                        let tr = document.createElement("tr");
+                        tableBody.appendChild(tr);
+                        let td = document.createElement("TD");
+                        td.innerHTML = "3 место";
+                        tr.appendChild(td);
+                        let tr0 = document.createElement("tr");
+                        tableBody.appendChild(tr0);
+                        let td0 = document.createElement("TD");
+                        td0.innerHTML = `${countrySecondRound[2].getFlagLarge()}`;
+                        tr0.appendChild(td0);
+                        let tr1 = document.createElement("tr");
+                        tableBody.appendChild(tr1);
+                        let td1 = document.createElement("TD");
+                        td1.innerHTML = `${countrySecondRound[2].getNameCountry()}`;
+                        tr1.appendChild(td1);
+
+                        for (let j = 0; j < array.length; j++) {
+                            let tr = document.createElement("tr");
+                            tableBody.appendChild(tr);
+                            let td = document.createElement("TD");
+                            td.innerHTML = array[j];
+                            tr.appendChild(td);
+                        }
+
+                        table.style.cssText=`   margin-left: 900px;
+                                                margin-top: -320px;
+                                                text-align: center;
+                                                font-size: 20px;
+                                                background-color: rgb(205, 127, 50);
+                                                border-radius: 25px;
+                                                color: black;
+                                                width: 250px;
+                                            `;
+                        return table;
+                    }
+
+                    // Функция вывода лучшего гонщика чемпионата
+
+                    function printBestRider (ridersBase) {
+                        let table = document.createElement("table");
+                        let tableBody = document.createElement("tablebody");
+                        table.append(tableBody);
+                        let tr = document.createElement("tr");
+                        tableBody.appendChild(tr);
+                        let td = document.createElement("TD");
+                        td.innerHTML = "Лучший гонщик";
+                        tr.appendChild(td);
+                        let td1 = document.createElement("TD");
+                        td1.innerHTML = `${ridersBase[0].getName()}`;
+                        tr.appendChild(td1);
+                        let td2 = document.createElement("TD");
+                        td2.innerHTML = `${ridersBase[0].getFlag()}`;
+                        tr.appendChild(td2);
+                        let td3 = document.createElement("TD");
+                        td3.innerHTML = `${ridersBase[0].getPoints()} pts`;
+                        tr.appendChild(td3);
+
+                        table.style.cssText=`   margin-left: 410px;
+                                                margin-top: 100px;
+                                                text-align: center;
+                                                font-size: 25px;
+                                                background-color: rgb(255, 215, 0);
+                                                border-radius: 25px;
+                                                color: black;
+                                                width: 550px;
+                                            `;
+
+                        return table;
+                    }
+
+                    document.getElementById("winnerstable").appendChild(printFirstPlace(countrySecondRound, ridersBase));
+                    document.getElementById("winnerstable").appendChild(printSecondPlace(countrySecondRound, ridersBase));
+                    document.getElementById("winnerstable").appendChild(printThirdPlace(countrySecondRound, ridersBase));
+                    document.getElementById("winnerstable").appendChild(printBestRider(ridersBase));
+                }
+
+        </script>
+    </head>
+</html>
